@@ -22,6 +22,6 @@ People behind Pixlr are very pragmatic when it comes to development and use the 
 
 == How about privacy? ==
 
-From Flash 10 and later, images are opened direct and local in your browser (i.e we don't see them in any way and they don't leave your computer). 
+From Flash 10 and later, images are opened direct and local in your browser (i.e they don't see them in any way and they don't leave your computer). 
 
 Files that are posted to us via the API or our add-ons are automatically deleted from our servers after 5 minutes.
