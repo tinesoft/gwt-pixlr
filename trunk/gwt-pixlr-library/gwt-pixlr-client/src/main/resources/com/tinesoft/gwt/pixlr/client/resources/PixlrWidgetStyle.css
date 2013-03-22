@@ -1,0 +1,30 @@
+.targetFrame {
+	width: 100%;
+	height: 100%;
+	background: #eee;
+	border: 1px solid rgb(192, 192, 192);
+	margin: -1px;
+}
+
+.targetFrame,.formPanel {
+	/*width:100%;
+	height:100%;
+	position:absolute;
+	top:0px;
+	left:0px;*/
+}
+
+.formPanel
+{
+	z-index:10;
+}
+
+.uploadButton {
+	
+}
+
+@sprite .loading {
+	background-position: center;
+	background-color: #eee;
+	gwt-image: 'loading';
+}
