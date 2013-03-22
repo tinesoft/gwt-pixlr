@@ -1,0 +1,497 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<groupId>com.tinesoft</groupId>
+		<artifactId>gwt-pixlr</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+	</parent>
+
+	<artifactId>gwt-pixlr-showcase</artifactId>
+	<packaging>war</packaging>
+
+	<!-- ============== -->
+	<!-- Informations -->
+	<!-- ============== -->
+	<name>gwt-pixlr - Showcase</name>
+	<description>Showcase of the gwt-pixlr library</description>
+
+	<!-- ============ -->
+	<!-- Properties -->
+	<!-- ============ -->
+	<properties>
+		<gwt.module>com.tinesoft.gwt.pixlr.showcase.ShowcaseApp</gwt.module>
+		<gwt.entrypoint>com.tinesoft.gwt.pixlr.showcase.client.ShowcaseApp</gwt.entrypoint>
+		<gwt.target>index.html</gwt.target>
+		<gwt.style>PRETTY</gwt.style>
+
+		<generated.dir>src/main/generated</generated.dir>
+		<target.dir>target/dev</target.dir>
+
+		<gwt.compiler.skip>false</gwt.compiler.skip>
+		<gwt.logLevel>INFO</gwt.logLevel>
+
+		<root-test-suite.junit>com/tinesoft/gwt/pixlr/showcase/AllTestSuite.java</root-test-suite.junit>
+	</properties>
+
+	<!-- ============== -->
+	<!-- Dependencies -->
+	<!-- ============== -->
+	<dependencies>
+		<!-- GWT-Pixlr client & server dependency -->
+		<dependency>
+			<groupId>${project.groupId}</groupId>
+			<artifactId>gwt-pixlr-all</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+
+		<!-- Logging -->
+		<dependency>
+			<!-- GWT-Log: Logging Library for Google Web Toolkit (GWT) with Deferred 
+				Binding -->
+			<groupId>com.allen-sauer.gwt.log</groupId>
+			<artifactId>gwt-log</artifactId>
+		</dependency>
+
+		<dependency>
+			<!-- SLF4J: Simple Logging Facade for Java (abstraction for various logging 
+				frameworks). -->
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
+		</dependency>
+
+		<dependency>
+			<!-- logback: java logging framework. -->
+			<groupId>ch.qos.logback</groupId>
+			<artifactId>logback-classic</artifactId>
+			<scope>runtime</scope>
+		</dependency>
+
+		<!-- Test -->
+		<dependency>
+			<!-- JUnit: unit testing framework for the Java programming language. -->
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<!-- Jukito: The combined power of JUnit, Guice and Mockito. -->
+			<groupId>org.jukito</groupId>
+			<artifactId>jukito</artifactId>
+			<scope>test</scope>
+		</dependency>
+
+		<!-- GWT -->
+		<dependency>
+			<!-- GWT-Servlet: server-side GWT components. -->
+			<groupId>com.google.gwt</groupId>
+			<artifactId>gwt-servlet</artifactId>
+			<scope>runtime</scope>
+		</dependency>
+
+		<dependency>
+			<!-- GWT-User: client-side GWT components. -->
+			<groupId>com.google.gwt</groupId>
+			<artifactId>gwt-user</artifactId>
+			<scope>provided</scope>
+		</dependency>
+
+		<dependency>
+			<!-- GWT-Dev: dev GWT components. -->
+			<groupId>com.google.gwt</groupId>
+			<artifactId>gwt-dev</artifactId>
+			<scope>test</scope>
+		</dependency>
+
+		<!-- Javax API -->
+		<dependency>
+			<groupId>javax.validation</groupId>
+			<artifactId>validation-api</artifactId>
+			<scope>provided</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>javax.validation</groupId>
+			<artifactId>validation-api</artifactId>
+			<classifier>sources</classifier>
+			<scope>provided</scope>
+		</dependency>
+
+		<!-- GWT-Injection -->
+		<dependency>
+			<!-- GWT-Injection: automatic dependency injection to GWT client-side 
+				code (built on top of Guice). -->
+			<groupId>com.google.gwt.inject</groupId>
+			<artifactId>gin</artifactId>
+		</dependency>
+
+		<!-- Guice -->
+		<dependency>
+			<!-- Guice: dependency injection framework for Java. -->
+			<groupId>com.google.inject</groupId>
+			<artifactId>guice</artifactId>
+		</dependency>
+
+		<dependency>
+			<!-- Guice-Servlet: Guice extension for use in web applications and servlet 
+				containers. -->
+			<groupId>com.google.inject.extensions</groupId>
+			<artifactId>guice-servlet</artifactId>
+		</dependency>
+
+		<dependency>
+			<!-- Guice-Persist: Guice extension for working with datastores and persistence 
+				providers. -->
+			<groupId>com.google.inject.extensions</groupId>
+			<artifactId>guice-persist</artifactId>
+		</dependency>
+
+		<!-- GWTPlatform: model-view-presenter framework for GWT. -->
+		<!-- features: undo/redo, navigation history, gin & guice integration, 
+			etc. -->
+		<dependency>
+			<!-- GWTPlatform extension for MVP component. -->
+			<groupId>com.gwtplatform</groupId>
+			<artifactId>gwtp-mvp-client</artifactId>
+			<scope>provided</scope>
+		</dependency>
+
+		<dependency>
+			<!-- GWTPlatform extension for client dispatcher component. -->
+			<groupId>com.gwtplatform</groupId>
+			<artifactId>gwtp-dispatch-client</artifactId>
+			<scope>provided</scope>
+		</dependency>
+
+		<dependency>
+			<!-- GWTPlatform extension for server dispatcher component. -->
+			<groupId>com.gwtplatform</groupId>
+			<artifactId>gwtp-dispatch-server-guice</artifactId>
+		</dependency>
+
+		<dependency>
+			<!-- GWTPlatform extension for annotation component. -->
+			<groupId>com.gwtplatform</groupId>
+			<artifactId>gwtp-processors</artifactId>
+			<scope>provided</scope>
+		</dependency>
+	</dependencies>
+
+	<!-- ==================== -->
+	<!-- Default Operations -->
+	<!-- ==================== -->
+	<build>
+		<resources>
+			<resource>
+				<directory>src/main/java</directory>
+				<includes>
+					<include>**/*.ui.xml</include>
+					<include>**/*.gwt.xml</include>
+				</includes>
+			</resource>
+			<resource>
+				<directory>src/main/resources</directory>
+			</resource>
+		</resources>
+
+		<outputDirectory>${target.dir}/WEB-INF/classes</outputDirectory>
+
+		<plugins>
+
+			<!-- GWT compile -->
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>gwt-maven-plugin</artifactId>
+				<configuration>
+					<output>${project.build.outputDirectory}</output>
+					<module>${gwt.module}</module>
+					<runTarget>${gwt.target}</runTarget>
+
+					<hostedWebapp>${target.dir}</hostedWebapp>
+					<logLevel>${gwt.logLevel}</logLevel>
+					<style>${gwt.style}</style>
+
+					<appEngineVersion>${gae.version}</appEngineVersion>
+					<appEngineHome>${gae.home}</appEngineHome>
+					<testTimeOut>180</testTimeOut>
+				</configuration>
+			</plugin>
+
+			<!-- Packaging -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-war-plugin</artifactId>
+				<configuration>
+					<filteringDeploymentDescriptors>true</filteringDeploymentDescriptors>
+				</configuration>
+			</plugin>
+
+			<!-- Copy webapp folder -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-resources-plugin</artifactId>
+				<executions>
+					<execution>
+						<goals>
+							<goal>copy-resources</goal>
+						</goals>
+						<phase>validate</phase>
+						<configuration>
+							<outputDirectory>${target.dir}</outputDirectory>
+							<resources>
+								<resource>
+									<directory>src/main/webapp</directory>
+									<filtering>true</filtering>
+								</resource>
+							</resources>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+
+			<!-- Clean generated dir -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-clean-plugin</artifactId>
+				<configuration>
+					<filesets>
+						<fileset>
+							<directory>${generated.dir}</directory>
+						</fileset>
+					</filesets>
+				</configuration>
+			</plugin>
+
+			<!-- Mavenify support -->
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>build-helper-maven-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>add-source</id>
+						<goals>
+							<goal>add-source</goal>
+						</goals>
+						<phase>generate-sources</phase>
+						<configuration>
+							<sources>
+								<source>${generated.dir}</source>
+							</sources>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+
+			<!-- JUnit Test Suites -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<configuration>
+					<includes>
+						<!-- don't run individual tests but only test suites -->
+						<include>${root-test-suite.junit}</include>
+					</includes>
+				</configuration>
+			</plugin>
+
+			<!-- Eclipse configuration -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-eclipse-plugin</artifactId>
+				<configuration>
+					<useProjectReferences>false</useProjectReferences>
+					<downloadSources>true</downloadSources>
+					<downloadJavadocs>true</downloadJavadocs>
+
+					<projectNameTemplate>[artifactId]</projectNameTemplate>
+
+					<sourceIncludes>
+						<sourceInclude>**/*.ui.xml</sourceInclude>
+						<sourceInclude>**/*.gwt.xml</sourceInclude>
+					</sourceIncludes>
+
+					<classpathContainers>
+						<classpathContainer>org.eclipse.jdt.launching.JRE_CONTAINER</classpathContainer>
+						<classpathContainer>com.google.gwt.eclipse.core.GWT_CONTAINER</classpathContainer>
+						<classpathContainer>com.google.appengine.eclipse.core.GAE_CONTAINER</classpathContainer>
+					</classpathContainers>
+					<excludes>
+						<!-- we need to exclude the dev and user libs from maven (eclipse adding 
+							them to the .classpath) as 1. they are already provided by com.google.gwt.eclipse.core.GWT_CONTAINER 
+							2. the GWT Plugin complains that it cannot find a GWT SDK, if these two are 
+							in there -->
+						<exclude>com.google.gwt:gwt-dev</exclude>
+						<exclude>com.google.gwt:gwt-user</exclude>
+					</excludes>
+
+					<additionalBuildcommands>
+						<buildcommand>com.google.appengine.eclipse.core.projectValidator</buildcommand>
+						<buildcommand>com.google.gdt.eclipse.core.webAppProjectValidator</buildcommand>
+						<buildcommand>com.google.gwt.eclipse.core.gwtProjectValidator</buildcommand>
+					</additionalBuildcommands>
+
+					<additionalProjectnatures>
+						<projectnature>com.google.gdt.eclipse.core.webAppNature</projectnature>
+						<projectnature>com.google.gwt.eclipse.core.gwtNature</projectnature>
+						<projectnature>com.google.appengine.eclipse.core.gaeNature</projectnature>
+					</additionalProjectnatures>
+
+					<additionalConfig>
+						<file>
+							<name>.settings/com.google.gdt.eclipse.core.prefs</name>
+							<content>eclipse.preferences.version=1
+jarsExcludedFromWebInfLib=
+lastWarOutDir=
+launchConfigExternalUrlPrefix=
+warSrcDir=${target.dir}
+warSrcDirIsOutput=false</content>
+						</file>
+						<file>
+							<name>.settings/org.eclipse.jdt.apt.core.prefs</name>
+							<content>eclipse.preferences.version=1
+org.eclipse.jdt.apt.aptEnabled=true
+org.eclipse.jdt.apt.genSrcDir=${generated.dir}
+org.eclipse.jdt.apt.reconcileEnabled=true</content>
+						</file>
+						<file>
+							<name>.settings/com.google.gwt.eclipse.core.prefs</name>
+							<content>eclipse.preferences.version=1
+entryPointModules=${gwt.entrypoint}</content>
+						</file>
+						<file>
+							<name>.settings/com.google.appengine.eclipse.core.prefs</name>
+							<content>eclipse.preferences.version=1
+filesCopiedToWebInfLib=</content>
+						</file>
+						<file>
+							<name>.factorypath</name>
+							<content>&lt;factorypath&gt;
+    &lt;factorypathentry kind="VARJAR" id="M2_REPO/com/gwtplatform/gwtp-processors/${gwt-platform.version}/gwtp-processors-${gwt-platform.version}.jar" enabled="true" runInBatchMode="false" /&gt;
+&lt;/factorypath&gt;</content>
+						</file>
+					</additionalConfig>
+				</configuration>
+				<dependencies>
+					<dependency>
+						<groupId>com.gwtplatform</groupId>
+						<artifactId>gwtp-build-tools</artifactId>
+						<version>${gwt-platform.version}</version>
+					</dependency>
+				</dependencies>
+			</plugin>
+
+		</plugins>
+	</build>
+
+	<!-- =========== -->
+	<!-- Reporting -->
+	<!-- =========== -->
+	<reporting>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-report-plugin</artifactId>
+				<configuration>
+					<aggregate>true</aggregate>
+				</configuration>
+			</plugin>
+		</plugins>
+	</reporting>
+
+	<!-- ========== -->
+	<!-- Profiles -->
+	<!-- ========== -->
+	<profiles>
+		<!-- GWTP : Boilerplate Generation -->
+		<profile>
+			<id>gwtp</id>
+			<activation>
+				<property>
+					<name>!gwtp-skip</name>
+				</property>
+			</activation>
+
+			<build>
+				<plugins>
+					<plugin>
+						<!-- disable annotation processors during normal compilation -->
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-compiler-plugin</artifactId>
+						<configuration>
+							<proc>none</proc>
+							<source>${maven.compiler.source}</source>
+							<target>${maven.compiler.target}</target>
+							<encoding>${project.encoding}</encoding>
+						</configuration>
+					</plugin>
+					<plugin>
+						<!-- run annotation processors on src/main/java sources -->
+						<groupId>org.bsc.maven</groupId>
+						<artifactId>maven-processor-plugin</artifactId>
+						<executions>
+							<execution>
+								<id>gwtp-process</id>
+								<goals>
+									<goal>process</goal>
+								</goals>
+								<phase>generate-sources</phase>
+								<configuration>
+									<outputDirectory>${generated.dir}</outputDirectory>
+									<processors>
+										<processor>com.gwtplatform.dispatch.annotation.processor.GenDtoProcessor</processor>
+										<processor>com.gwtplatform.dispatch.annotation.processor.GenEventProcessor</processor>
+										<processor>com.gwtplatform.dispatch.annotation.processor.GenDispatchProcessor</processor>
+									</processors>
+									<includes>
+										<include>**/shared/**/*.java</include>
+									</includes>
+								</configuration>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+
+        <!-- DEVELOPMENT MODE -->
+        <profile>
+            <id>dev</id>
+            <properties>	
+				<gwt.module>com.tinesoft.gwt.pixlr.showcase.ShowcaseAppDEV</gwt.module>
+                <gwt.style>PRETTY</gwt.style>
+            </properties>
+        </profile>
+        
+        <!-- PRODUCTION MODE -->
+        <profile>
+            <id>prod</id>
+            <properties>
+				<gwt.module>com.tinesoft.gwt.pixlr.showcase.ShowcaseAppPROD</gwt.module>
+                <gwt.style>OBFUSCATED</gwt.style>
+            </properties>
+        </profile>
+        
+		<!-- HUDSON : Continous Integration -->
+		<profile>
+			<id>continous-integration</id>
+			<properties>
+				<gwt.module>com.tinesoft.gwt.pixlr.showcase.ShowcaseAppDEV</gwt.module>
+                <gwt.style>PRETTY</gwt.style>
+				<root-test-suite.junit>com/tinesoft/gwt/pixlr/showcase/ContinousIntegrationTestSuite.java</root-test-suite.junit>
+			</properties>
+		</profile>
+
+		<!-- HUDSON : Nightly Build -->
+		<profile>
+			<id>nightly-build</id>
+			<properties>
+				<gwt.module>com.tinesoft.gwt.pixlr.showcase.ShowcaseAppDEV</gwt.module>
+                <gwt.style>PRETTY</gwt.style>
+				<root-test-suite.junit>com/tinesoft/gwt/pixlr/showcase/NightlyBuildTestSuite.java</root-test-suite.junit>
+			</properties>
+		</profile>
+	</profiles>
+</project>

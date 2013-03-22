@@ -1,0 +1,23 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+
+<ui:UiBinder xmlns:ui='urn:ui:com.google.gwt.uibinder'
+	xmlns:g='urn:import:com.google.gwt.user.client.ui'
+	xmlns:my='urn:import:com.tinesoft.gwt.pixlr.client.ui'
+	ui:generateFormat='com.google.gwt.i18n.rebind.format.PropertiesFormat'
+	ui:generateKeys='com.google.gwt.i18n.rebind.keygen.MD5KeyGenerator'
+	ui:generateLocales='default'>
+	
+	<ui:with
+		type="com.tinesoft.gwt.pixlr.showcase.client.resources.ShowcaseResources"
+		field="res" />
+
+	<g:FlowPanel>
+		<g:HTMLPanel>
+			<g:Grid>
+				<g:row>
+					<g:customCell><my:PixlrWidget ui:field="pixlrWidget" width="800px" height="500px"/></g:customCell>
+				</g:row>
+			</g:Grid>
+		</g:HTMLPanel>
+	</g:FlowPanel>
+</ui:UiBinder>
