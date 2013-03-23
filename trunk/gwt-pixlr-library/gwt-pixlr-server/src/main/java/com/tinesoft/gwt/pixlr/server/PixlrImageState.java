@@ -20,5 +20,11 @@ public enum PixlrImageState {
     /**
      * TODO: document this
      */
-    REPLACE
+    REPLACE;
+
+    public static PixlrImageState valueOf(Class<PixlrImageState> enumType, String name) {
+        if (name == null)
+            throw new NullPointerException("Name is null");
+        return Enum.valueOf(PixlrImageState.class, name);
+    }
 }

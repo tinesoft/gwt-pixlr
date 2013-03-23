@@ -53,7 +53,29 @@
 
 	<!-- Other servlets -->
 
+	<!-- GWT Pixlr : Pixlr Servlet -->
+	<servlet>
+		<servlet-name>gwt-pixlr-servlet</servlet-name>
+		<servlet-class>com.tinesoft.gwt.pixlr.server.PixlrServlet</servlet-class>
+		<init-param>
+			<param-name>com.tinesoft.gwt.pixlr.server.maxMemorySize</param-name>
+			<param-value>10485760</param-value>
+		</init-param>
+		<init-param>
+			<param-name>com.tinesoft.gwt.pixlr.server.maxRequestSize</param-name>
+			<param-value>10485760</param-value>
+		</init-param>
+		<init-param>
+			<param-name>com.tinesoft.gwt.pixlr.server.tempDirectory</param-name>
+			<param-value>showcase/temp/</param-value>
+		</init-param>
+	</servlet>
 
+	<servlet-mapping>
+		<servlet-name>gwt-pixlr-servlet</servlet-name>
+		<url-pattern>/showcase/pixlr</url-pattern>
+	</servlet-mapping>
+	
 	<!-- Security -->
 
 	<!-- Require user login for the .html welcome page -->

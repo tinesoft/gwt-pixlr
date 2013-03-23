@@ -1,6 +1,10 @@
 
 package com.tinesoft.gwt.pixlr.server;
 
+import java.io.InputStream;
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * Encapsulates the result sent back by the 'Pixlr' service when saving an image.
  * 
@@ -9,36 +13,15 @@ package com.tinesoft.gwt.pixlr.server;
  */
 public class PixlrResult {
 
-    private byte[] image;
     private String title;
     private PixlrImageType type;
     private PixlrImageState state;
+    private InputStream image;
 
     /**
-     * The content of this parameter depends on the value of the "method" in-parameter.
-     * <ul>
-     * <li>If method was GET the value of image is an url to where we saved the image.</li>
-     * <li>If method was POST the value of image is the actual image.</li>
-     * </ul>
-     * 
-     * @param image
+     * A map of additional parameters that can be passed via 'Target URL'
      */
-    protected void setImage(byte[] image) {
-        this.image = image;
-    }
-
-    /**
-     * The content of this parameter depends on the value of the "method" in-parameter.
-     * <ul>
-     * <li>If method was GET the value of image is an url to where we saved the image.</li>
-     * <li>If method was POST the value of image is the actual image.</li>
-     * </ul>
-     * 
-     * @return
-     */
-    public byte[] getImage() {
-        return image;
-    }
+    private final Map<String, String> moreParams = new HashMap<String, String>();
 
     /**
      * Gets the title of the image the user typed in when saving..
@@ -92,6 +75,47 @@ public class PixlrResult {
      */
     protected void setState(PixlrImageState state) {
         this.state = state;
+    }
+
+    /**
+     * Adds an additional parameter to the result.
+     * 
+     * @param parameterName
+     * @param parameterValue
+     */
+    protected void addParameter(String parameterName, String parameterValue) {
+        moreParams.put(parameterName, parameterValue);
+    }
+
+    /**
+     * Gets the named additional parameter that has been sent to 'Pixlr' via the 'Target URL'
+     * parameter.
+     * 
+     * @param parameterName
+     * @return
+     */
+    public String getParameter(String parameterName) {
+        return moreParams.get(parameterName);
+    }
+
+    /**
+     * Gets the input stream to the image, sent by 'Pixlr' (either as posted raw data or via its
+     * URL) after the user has saved it.
+     * 
+     * @return
+     */
+    public InputStream getImage() {
+        return image;
+    }
+
+    /**
+     * Sets the input stream to image, sent by 'Pixlr' (either as posted raw data or via its URL)
+     * after the user has saved it.
+     * 
+     * @param image
+     */
+    protected void setImage(InputStream imageInputStream) {
+        this.image = imageInputStream;
     }
 
 }
