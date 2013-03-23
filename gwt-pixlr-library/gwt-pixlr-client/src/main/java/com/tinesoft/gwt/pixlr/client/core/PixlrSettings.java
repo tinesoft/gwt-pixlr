@@ -1,6 +1,9 @@
 
 package com.tinesoft.gwt.pixlr.client.core;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * Encapsulates all parameters that can be send to 'Pixlr'.
  * 
@@ -27,6 +30,11 @@ public class PixlrSettings {
     private Integer maxHeight;
     private PixlrWmode wmode;
     private PixlrService service = PixlrService.EXPRESS;
+
+    /**
+     * A map of additional parameters that can be passed via 'Target URL'
+     */
+    private final Map<String, String> moreParams = new HashMap<String, String>();
 
     /**
      * Gets the name of the referring service for example "Your site name" or "Facebook".
@@ -376,4 +384,33 @@ public class PixlrSettings {
         this.service = service;
     }
 
+    /**
+     * Adds an additional parameter to the result.
+     * 
+     * @param parameterName
+     * @param parameterValue
+     */
+    protected void addParameter(String parameterName, String parameterValue) {
+        moreParams.put(parameterName, parameterValue);
+    }
+
+    /**
+     * Gets the named additional parameter that has been sent to 'Pixlr' via the 'Target URL'
+     * parameter.
+     * 
+     * @param parameterName
+     * @return
+     */
+    public String getParameter(String parameterName) {
+        return moreParams.get(parameterName);
+    }
+
+    /**
+     * Gets the map of additional parameters.
+     * 
+     * @return
+     */
+    public Map<String, String> getAdditionalParameters() {
+        return moreParams;
+    }
 }

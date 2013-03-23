@@ -1,6 +1,7 @@
 
 package com.tinesoft.gwt.pixlr.client.core;
 
+
 /**
  * Enumeration of all image types supported by 'Pixlr'
  * 
@@ -24,5 +25,11 @@ public enum PixlrImageType {
      */
     public String getExtension() {
         return extension;
+    }
+
+    public static PixlrImageType valueOf(Class<PixlrImageType> enumType, String name) {
+        if (name == null)
+            throw new NullPointerException("Name is null");
+        return Enum.valueOf(PixlrImageType.class, name);
     }
 }

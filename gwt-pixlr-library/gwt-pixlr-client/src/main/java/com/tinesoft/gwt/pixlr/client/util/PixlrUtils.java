@@ -1,6 +1,8 @@
 
 package com.tinesoft.gwt.pixlr.client.util;
 
+import java.util.Map.Entry;
+
 import com.google.gwt.user.client.ui.FormPanel;
 import com.google.gwt.user.client.ui.Hidden;
 import com.google.gwt.user.client.ui.Panel;
@@ -235,6 +237,12 @@ public class PixlrUtils {
         if (settings.getWmode() != null) {
             Hidden wmodeField = new Hidden(WMODE, settings.getWmode().toString().toLowerCase());
             formFieldsHolder.add(wmodeField);
+        }
+
+        // add any additional parameter
+        for (Entry<String, String> entry : settings.getAdditionalParameters().entrySet()) {
+            Hidden field = new Hidden(entry.getKey(), entry.getValue());
+            formFieldsHolder.add(field);
         }
     }
 }

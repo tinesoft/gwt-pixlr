@@ -26,4 +26,15 @@ public enum PixlrService {
         return value;
     }
 
+    /**
+     * 
+     * @param enumType
+     * @param name
+     * @return
+     */
+    public static PixlrService valueOf(Class<PixlrService> enumType, String name) {
+        if (name == null)
+            throw new NullPointerException("Name is null");
+        return Enum.valueOf(PixlrService.class, name);
+    }
 }

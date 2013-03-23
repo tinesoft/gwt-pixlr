@@ -1,82 +1,58 @@
 
 package com.tinesoft.gwt.pixlr.server;
 
+import java.io.BufferedInputStream;
+import java.io.BufferedOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.List;
+import java.io.OutputStream;
 
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
-import org.apache.commons.fileupload.FileItem;
-import org.apache.commons.fileupload.FileUploadException;
-import org.apache.commons.fileupload.disk.DiskFileItemFactory;
-import org.apache.commons.fileupload.servlet.ServletFileUpload;
-import org.apache.commons.io.FilenameUtils;
+import org.apache.commons.io.IOUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * 
  * @author Tine Kondo<kondotine@gmail.com>
  * @version $Id$
  */
-public class PixlrServlet extends HttpServlet {
+public class PixlrServlet extends AbstractPixlrServlet {
 
-    // FIXME : Improve javadoc
-    /**
-     * The content of this parameter depends on the value of the "method" in-parameter. If method
-     * was GET the value of image is an url to where we saved the image. If method was POST the
-     * value of image is the actual image.
-     */
-    private static final String IMAGE_PARAM = "image";
-    /**
-     * The title of the image the user typed in when saving.
-     */
-    private static final String TITLE_PARAM = "title";
-    /**
-     * The type of image can be: jpg, png, bmp or pxd.
-     */
-    private static final String TYPE_PARAM = "type";
-    /**
-     * The state of the image, can be "new", "copy", "replace". New is when the user open/creates
-     * the image in the editor. Copy is when the image is from the API and the image checked
-     * "Save as copy".
-     */
-    private static final String STATE_PARAM = "state";
+    private static final Logger LOG = LoggerFactory.getLogger(PixlrServlet.class);
 
     /**
      * 
      */
     private static final long serialVersionUID = 1L;
 
+    private static final int IO_BUFFER_SIZE = 8 * 1024;
+
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void handlePixlrResult(PixlrResult result) {
         // TODO Auto-generated method stub
-        super.doGet(request, response);
+
     }
 
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        try {
-            List<FileItem> items = new ServletFileUpload(new DiskFileItemFactory()).parseRequest(request);
-            for (FileItem item : items) {
-                String fieldName = item.getFieldName();
+    public void writeToStream(InputStream inputStream, OutputStream outputStream) {
 
-                if (item.isFormField()) {
-                    // Process regular form field (input type="text|radio|checkbox|etc", select,
-                    // etc).
-                    String fieldValue = item.getString();
-                    // ... (do your job here)
-                } else if (IMAGE_PARAM.equalsIgnoreCase(fieldName)) {
-                    // Process form file field (input type="file").
-                    String filename = FilenameUtils.getName(item.getName());
-                    InputStream fileContent = item.getInputStream();
-                    // ... (do your job here)
-                }
+        BufferedOutputStream out = null;
+        BufferedInputStream in = null;
+
+        try {
+
+            in = new BufferedInputStream(inputStream, IO_BUFFER_SIZE);
+            out = new BufferedOutputStream(outputStream, IO_BUFFER_SIZE);
+
+            int b;
+            while ((b = in.read()) != -1) {
+                out.write(b);
             }
-        } catch (FileUploadException e) {
-            throw new ServletException("Cannot parse multipart request.", e);
+        } catch (final IOException e) {
+            LOG.error("I/O error occured", e);
+        } finally {
+            IOUtils.closeQuietly(in);
+            IOUtils.closeQuietly(out);
         }
     }
+
 }
