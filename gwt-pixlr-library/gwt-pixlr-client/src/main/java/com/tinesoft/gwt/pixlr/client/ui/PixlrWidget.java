@@ -2,18 +2,14 @@
 package com.tinesoft.gwt.pixlr.client.ui;
 
 import com.google.gwt.core.client.GWT;
-import com.google.gwt.event.dom.client.ChangeEvent;
-import com.google.gwt.event.dom.client.ChangeHandler;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.uibinder.client.UiHandler;
 import com.google.gwt.user.client.ui.Composite;
-import com.google.gwt.user.client.ui.FileUpload;
 import com.google.gwt.user.client.ui.FormPanel;
 import com.google.gwt.user.client.ui.FormPanel.SubmitCompleteEvent;
 import com.google.gwt.user.client.ui.FormPanel.SubmitEvent;
 import com.google.gwt.user.client.ui.NamedFrame;
-import com.google.gwt.user.client.ui.Panel;
 import com.google.gwt.user.client.ui.VerticalPanel;
 import com.google.gwt.user.client.ui.Widget;
 
@@ -21,7 +17,6 @@ import com.tinesoft.gwt.pixlr.client.core.PixlrSendMethod;
 import com.tinesoft.gwt.pixlr.client.core.PixlrSettings;
 import com.tinesoft.gwt.pixlr.client.resources.PixlrWidgetResources;
 import com.tinesoft.gwt.pixlr.client.util.PixlrUtils;
-import com.tinesoft.gwt.pixlr.client.util.StringUtils;
 
 /**
  * Main widget that allows to integrate 'Pixlr' editor as GWT widget.
@@ -51,10 +46,19 @@ public class PixlrWidget extends Composite {
 
     private static final String GWTP_TARGET_IFRAME_NAME = "gwtp-target-iframe";
 
+    /**
+     * Default constructor.
+     */
     public PixlrWidget() {
         this(null, getDefaultResources());
     }
 
+    /**
+     * 
+     * @param settings
+     * @param resources a custom {@link PixlrWidgetResources} to change css, images used by the
+     *            widget
+     */
     public PixlrWidget(final PixlrSettings settings, PixlrWidgetResources resources) {
         this.settings = settings;
         this.resources = resources;
@@ -78,35 +82,15 @@ public class PixlrWidget extends Composite {
     private void initialize() {
 
         // initialize the form panel based on given settings
-        PixlrUtils.buildFormPanel(formPanel, settings);
+        PixlrUtils.buildFormPanel(formPanel, settings, resources);
 
-        // when submit via "POST", we must submit the image to 'Pixlr' as raw data attached to the
-        // form. This means that the user must be able to select a file from his computer and then
-        // upload it.This can be done via a FileUpload widget (<input type="file" ...>)
-        // FIXME : do that in the Pixlr Utils?
-        if (PixlrSendMethod.POST.equals(settings.getMethod())) {
-            final FileUpload fileUploadField = new FileUpload();
-            fileUploadField.setName(PixlrUtils.IMAGE);
-            fileUploadField.setStyleName("gwtp-fileupload");// FIXME externalize name
-            ((Panel) formPanel.getWidget()).add(fileUploadField);
-            fileUploadField.addStyleName(resources.css().button());
-            fileUploadField.addStyleName(resources.css().selectedButton());
-            // FIXME: fileUploadField.getElement().setPropertyString("accept", mimeList);
+        // when using GET, the image is defined via URL, so we can directly submit the form
+        // otherwise, it will be automatically submitted once the user chooses a file from its
+        // computer.
 
-            // we auto submit the form once a valid image has been chosen
-            fileUploadField.addChangeHandler(new ChangeHandler() {
-
-                @Override
-                public void onChange(ChangeEvent event) {
-                    if (StringUtils.isNotBlank(fileUploadField.getFilename()))
-                        // FIXME: check uploaded image file type
-                        formPanel.submit();
-                }
-            });
-        } else
-            // otherwise, we image is defined via URL, so we can directly submit the form to 'Pixlr'
+        if (PixlrSendMethod.GET.equals(settings.getMethod())) {
             formPanel.submit();
-
+        }
     }
 
     @UiHandler("formPanel")

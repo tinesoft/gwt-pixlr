@@ -1,6 +1,7 @@
 
 package com.tinesoft.gwt.pixlr.server;
 
+
 /**
  * Enumeration of all states of image that can be returned by 'Pixlr'.
  * 
@@ -22,9 +23,9 @@ public enum PixlrImageState {
      */
     REPLACE;
 
-    public static PixlrImageState valueOf(Class<PixlrImageState> enumType, String name) {
+    public static PixlrImageState from(String name) {
         if (name == null)
             throw new NullPointerException("Name is null");
-        return Enum.valueOf(PixlrImageState.class, name);
+        return PixlrImageState.valueOf(name.trim().toUpperCase());
     }
 }

@@ -32,9 +32,9 @@ public enum PixlrService {
      * @param name
      * @return
      */
-    public static PixlrService valueOf(Class<PixlrService> enumType, String name) {
+    public static PixlrService from(String name) {
         if (name == null)
             throw new NullPointerException("Name is null");
-        return Enum.valueOf(PixlrService.class, name);
+        return PixlrService.valueOf(name.trim().toUpperCase());
     }
 }
