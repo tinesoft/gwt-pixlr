@@ -170,3 +170,56 @@ PixlrWidget pixlrWidget;
 }}}
 
 = Using the library (Server Side) =
+
+These are the required steps:
+ # Create a Servlet by extending *PixlrServlet*
+ # Configure your *web.xml*
+
+=== Creating your servlet ===
+{{{
+public class MyPixlrServlet extends PixlrServlet {
+
+    /**
+     * 
+     */
+    private static final long serialVersionUID = 1L;
+
+    @Override
+    protected void handlePixlrResult(PixlrResult result) {
+
+        // here, you can do whatever you want with the result, eg: save image to db, to file system,
+        // etc...
+
+        // result.getImage(); the saved image data, as a java.io.InputStream
+        // result.getState(); the state of the image (new, replace or copy)
+        // result.getTitle(); the title of the image as entered by the user after saving
+        // result.getType(); the type of the saved image
+
+        // result.getAdditionalParameters(); the map of additional values passed (if any)
+
+    }
+}
+}}}
+
+=== Configuring the web.xml ===
+
+*web.xml*:
+
+{{{
+	<!-- Pixlr Servlet -->
+	<servlet>
+		<servlet-name>gwt-pixlr-servlet</servlet-name>
+		<servlet-class>com.tinesoft.gwt.pixlr.showcase.server.MyPixlrServlet</servlet-class>
+
+        <!-- Uncomment to set a max allowed request size, in bytes.-->
+ 	<!-	<init-param> -->
+ 	<!--		<param-name>maxRequestSize</param-name> -->
+ 	<!--		<param-value>10485760</param-value> -->
+	<!-- 	</init-param> -->
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>gwt-pixlr-servlet</servlet-name>
+		<url-pattern>/showcase/pixlr</url-pattern>
+	</servlet-mapping>
+}}}
