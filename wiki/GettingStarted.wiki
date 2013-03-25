@@ -226,4 +226,4 @@ public class MyPixlrServlet extends PixlrServlet {
 
 In this example, the servlet will be available at: [http://yoursite.com/pixlr/]
 
-This is the  *target* URL you have to specified when configuring the *PixlrSettings* object. 'Pixlr' will send to that URL the information about the saved image.
+This is the  *target* URL you have to specify when configuring the *PixlrSettings* instance. 'Pixlr' will send to that URL, the information about the saved image.
