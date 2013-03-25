@@ -23,5 +23,5 @@ The *gwt-pixlr-client* component is the core component of the library, given tha
 = gwt-pixlr-server =
 
 The *gwt-pixlr-server* component is the optional server-side component of the libary. It contains elements that allows you to retrieve the information about the image being edited, after the user saves his modifications.
- * *PixlrServlet*: Abstract servlet that parses each request sent by 'Pixlr' (after user saves an image in the editor), and provides the information about the saved image via a *PixlrResult* object. You can extend this class and implement the folowwing method: <code language="java">protected void handlePixlrResult(PixlrResult result)</code> to handle the result (for e.g save it to file system, to database, etc)
- * *PixlrResult* A class encapsulating the information about the edited image (title, type, state) and any additional parameters you may have passed when calling the Pixlr's service.
+ * *PixlrServlet*: Abstract servlet that parses each request sent by 'Pixlr' (after user saves an image in the editor), and provides the information about the saved image via a *PixlrResult* object. You can extend this class and implement the following method: <code language="java">protected void handlePixlrResult(PixlrResult result)</code> to handle the result (for e.g save it to file system, to database, etc)
+ * *PixlrResult* A class encapsulating the information about the edited image ( image data as input stream, title, type, state) and any additional parameters you may have passed when calling the Pixlr's service.
