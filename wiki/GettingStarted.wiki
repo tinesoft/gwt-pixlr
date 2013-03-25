@@ -116,7 +116,7 @@ panel.add(yourPixlrWidget);
 
 }}}
 
-====Explanation ====
+==== Explanation ====
 
  * Define the namespace prefix for widgets used to build the pixlr widget. Here i have chosen *my* as prefix, and the package containing the widgets is *com.tinesoft.gwt.pixlr.client.ui*. So the namespace definition will be: 
 {{{
@@ -141,5 +141,32 @@ xmlns:my='urn:import:com.tinesoft.gwt.pixlr.client.ui'
 PixlrWidget pixlrWidget;
 ...
 
-
 }}}
+
+=== Configuring the widget ===
+
+*PixlrWidget* uses *PixlrSettings*, a class that defining the IN parameters sent to Pixlr. Among them, the following are required:
+ * *service*: The Pixlr Service to contact
+ * *method*: The HTTP method used to contact the service, either "GET" or "POST"
+ * *image*: Depending on the send method used, contains either the URL to the image or the post raw data of the image to open.
+ * *target*: The URL to which Pixlr will send the image information when saving
+
+*Sample code:*
+
+<code language="java">
+   ...
+   PixlrSetting yourSettings = new PixlrSettings();
+   //Setting main parameters:
+   yoursettings.setService(PixlrService.EXPRESS);
+   yourSettings.setMethod(PixlrSendMethod.GET);
+   yourSettings.setImage("http://www.yoursite.com/yourimage.jpg");
+   yourSettings.setTarget("http://www.yoursite.com/path-to-your-pixlr-servlet/");
+   ...
+   //Adding additionnal parameters (non-API parameters)
+   yourSettings.putAdditionalParameter("userId","123");
+   ...
+
+   // Associate the widget with its settings
+   yourPixlrWidget.setSettings(yourSettings);
+
+</code>
