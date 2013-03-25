@@ -1,6 +1,9 @@
 #summary Getting started with gwt-pixlr library.
 #labels Featured
 
+= Table of Contents =
+<wiki:toc max_depth="3" />
+
 = Setup =
 
 First, you need to add the gwt-pixlr jar files to your project's build path.
