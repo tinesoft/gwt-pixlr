@@ -19,7 +19,7 @@ If you only need the server-side components, use this jar instead:
  * *gwt-pixlr-server`<`version`>`.jar*
 
 == Setting up your project with Maven ==
-If you use Maven to build you project (what i personnaly recommend) you can easily set you project with gwt-pixlr by adding the following dependency to your *pom.xml*:
+If you use Maven to build you project (what i personally recommend) you can easily set your project with gwt-pixlr by adding the following dependency to your *pom.xml*:
 
 {{{
 <dependency>
