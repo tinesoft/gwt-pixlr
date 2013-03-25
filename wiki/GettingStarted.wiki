@@ -201,7 +201,7 @@ public class MyPixlrServlet extends PixlrServlet {
 }
 }}}
 
-== Configuring the web.xml ==
+== Configuring your web.xml ==
 
 *web.xml*:
 
