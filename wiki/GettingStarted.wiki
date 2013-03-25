@@ -175,7 +175,7 @@ These are the required steps:
  # Create a Servlet by extending *PixlrServlet*
  # Configure your *web.xml*
 
-=== Creating your servlet ===
+== Creating your servlet ==
 {{{
 public class MyPixlrServlet extends PixlrServlet {
 
@@ -201,15 +201,15 @@ public class MyPixlrServlet extends PixlrServlet {
 }
 }}}
 
-=== Configuring the web.xml ===
+== Configuring the web.xml ==
 
 *web.xml*:
 
 {{{
 	<!-- Pixlr Servlet -->
 	<servlet>
-		<servlet-name>gwt-pixlr-servlet</servlet-name>
-		<servlet-class>com.tinesoft.gwt.pixlr.showcase.server.MyPixlrServlet</servlet-class>
+		<servlet-name>your-pixlr-servlet</servlet-name>
+		<servlet-class>com.tinesoft.gwt.pixlr.showcase.server.YourPixlrServlet</servlet-class>
 
         <!-- Uncomment to set a max allowed request size, in bytes.-->
  	<!-	<init-param> -->
@@ -219,7 +219,11 @@ public class MyPixlrServlet extends PixlrServlet {
 	</servlet>
 
 	<servlet-mapping>
-		<servlet-name>gwt-pixlr-servlet</servlet-name>
-		<url-pattern>/showcase/pixlr</url-pattern>
+		<servlet-name>your-pixlr-servlet</servlet-name>
+		<url-pattern>/pixlr</url-pattern>
 	</servlet-mapping>
 }}}
+
+In this example, the servlet will be available at: [http://yoursite.com/pixlr/]
+
+This is the  *target* URL you have to specified when configuring the *PixlrSettings* object. 'Pixlr' will send to that URL the information about the saved image.
