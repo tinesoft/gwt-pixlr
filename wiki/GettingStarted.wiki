@@ -77,12 +77,10 @@ Modify *`<`YourApplication`>`.gwt.xml* to inherit the gwt-pixlr module:
 
 Theses are the required steps to start using the library client-side:
  # Create and add a *PixlrWidget* to your application UI.
- # Create and configure a *PixlrSettings* object and affects it to the widget by calling: <code language="java">yourPixlrWidget.setSettings(yourSettings)</code>
+ # Create and configure a *PixlrSettings* object and affects it to the widget
  
-That's all that's needed. Really! 
 
-
-=== Adding the widget without uibinder ===
+== Adding the widget without uibinder ==
 
 Easy. Just create and add the PixlrWidget in your application layout, as any  other GWT widget.
 
@@ -94,7 +92,7 @@ panel.add(yourPixlrWidget);
 ...
 }}}
 
-=== Adding the widget with uibinder ===
+== Adding the widget with uibinder ==
 *MyView.ui.xml:*
 {{{
 <!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
@@ -143,7 +141,7 @@ PixlrWidget pixlrWidget;
 
 }}}
 
-=== Configuring the widget ===
+== Configuring the widget ==
 
 *PixlrWidget* uses *PixlrSettings*, a class that defining the IN parameters sent to Pixlr. Among them, the following are required:
  * *service*: The Pixlr Service to contact
@@ -153,7 +151,7 @@ PixlrWidget pixlrWidget;
 
 *Sample code:*
 
-<code language="java">
+{{{
    ...
    PixlrSetting yourSettings = new PixlrSettings();
    //Setting main parameters:
@@ -169,4 +167,4 @@ PixlrWidget pixlrWidget;
    // Associate the widget with its settings
    yourPixlrWidget.setSettings(yourSettings);
 
-</code>
+}}}
