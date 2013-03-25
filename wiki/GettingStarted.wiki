@@ -2,7 +2,8 @@
 #labels Featured
 
 = Table of Contents =
-<wiki:toc max_depth="3" />
+
+<wiki:toc max_depth="2" />
 
 = Setup =
 
@@ -81,7 +82,7 @@ Theses are the required steps to start using the library client-side:
 That's all that's needed. Really! 
 
 
-=== Adding the widget without UiBinder ===
+=== Adding the widget without uibinder ===
 
 Easy. Just create and add the PixlrWidget in your application layout, as any  other GWT widget.
 
@@ -93,7 +94,7 @@ panel.add(yourPixlrWidget);
 ...
 }}}
 
-=== Adding the widget with UiBinder ===
+=== Adding the widget with uibinder ===
 *MyView.ui.xml:*
 {{{
 <!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
