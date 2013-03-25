@@ -63,7 +63,7 @@ But if you want to use a snapshot (= under development) version of the library, 
 
 == Configuring your  `*`.gwt.xml Module ==
 
-Modify <YourApplication>.gwt.xml to inherit the gwt-pixlr module:
+Modify *`<`YourApplication`>`.gwt.xml* to inherit the gwt-pixlr module:
 {{{
   <inherits name='com.tinesoft.gwt.pixlr.GWTPixlr' />
 }}}
