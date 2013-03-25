@@ -21,7 +21,7 @@ public class PixlrResult {
     /**
      * A map of additional parameters that can be passed via 'Target URL'
      */
-    private final Map<String, String> moreParams = new HashMap<String, String>();
+    private final Map<String, String> additionalParameters = new HashMap<String, String>();
 
     /**
      * Gets the title of the image the user typed in when saving..
@@ -80,22 +80,22 @@ public class PixlrResult {
     /**
      * Adds an additional parameter to the result.
      * 
-     * @param parameterName
-     * @param parameterValue
+     * @param parameterName the parameter name
+     * @param parameterValue the parameter value
      */
-    protected void addParameter(String parameterName, String parameterValue) {
-        moreParams.put(parameterName, parameterValue);
+    protected void putAdditionalParameter(String parameterName, String parameterValue) {
+        additionalParameters.put(parameterName, parameterValue);
     }
 
     /**
      * Gets the named additional parameter that has been sent to 'Pixlr' via the 'Target URL'
      * parameter.
      * 
-     * @param parameterName
+     * @param parameterName the parameter name
      * @return
      */
-    public String getParameter(String parameterName) {
-        return moreParams.get(parameterName);
+    public String getAdditionalParameter(String parameterName) {
+        return additionalParameters.get(parameterName);
     }
 
     /**
@@ -118,4 +118,12 @@ public class PixlrResult {
         this.image = imageInputStream;
     }
 
+    /**
+     * Gets the map of additional parameters.
+     * 
+     * @return
+     */
+    public Map<String, String> getAdditionalParameters() {
+        return additionalParameters;
+    }
 }

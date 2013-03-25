@@ -11,9 +11,9 @@ public enum PixlrWmode {
 
     TRANSPARENT, OPAQUE, WINDOW;
 
-    public static PixlrWmode valueOf(Class<PixlrWmode> enumType, String name) {
+    public static PixlrWmode from(String name) {
         if (name == null)
             throw new NullPointerException("Name is null");
-        return Enum.valueOf(PixlrWmode.class, name);
+        return PixlrWmode.valueOf(name.trim().toUpperCase());
     }
 }

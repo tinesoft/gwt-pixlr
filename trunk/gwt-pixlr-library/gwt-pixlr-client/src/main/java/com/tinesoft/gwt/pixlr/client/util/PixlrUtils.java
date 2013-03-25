@@ -3,12 +3,16 @@ package com.tinesoft.gwt.pixlr.client.util;
 
 import java.util.Map.Entry;
 
+import com.google.gwt.event.dom.client.ChangeEvent;
+import com.google.gwt.event.dom.client.ChangeHandler;
+import com.google.gwt.user.client.ui.FileUpload;
 import com.google.gwt.user.client.ui.FormPanel;
 import com.google.gwt.user.client.ui.Hidden;
 import com.google.gwt.user.client.ui.Panel;
 import com.google.gwt.user.client.ui.VerticalPanel;
 
 import com.tinesoft.gwt.pixlr.client.core.PixlrSettings;
+import com.tinesoft.gwt.pixlr.client.resources.PixlrWidgetResources;
 
 /**
  * Utility class for Pixlr
@@ -23,71 +27,71 @@ public class PixlrUtils {
     /**
      * The name of the referring service for example "Your site name" or "Facebook"
      */
-    public static final String REFERRER = "referrer";
+    public static final String REFERRER_PARAM = "referrer";
     /**
      * A url to a 16*16 icon to be shown at the save tab
      */
-    public static final String ICON = "icon";
+    public static final String ICON_PARAM = "icon";
     /**
      * The URL to send the visitor if the user click exit/close
      */
-    public static final String EXIT = "exit";
+    public static final String EXIT_PARAM = "exit";
     /**
      * A URL to the image or the post raw data of the image to open
      */
-    public static final String IMAGE = "image";
+    public static final String IMAGE_PARAM = "image";
     /**
      * The title of the opened image
      */
-    public static final String TITLE = "title";
+    public static final String TITLE_PARAM = "title";
     /**
      * The filetype of the image, just type no ".", the apps will try to get the type from the URL
      * if type param is not provided.
      */
-    public static final String TYPE = "type";
+    public static final String TYPE_PARAM = "type";
 
     /**
      * The URL to which we send the image information when saving
      */
-    public static final String TARGET = "target";
+    public static final String TARGET_PARAM = "target";
     /**
      * Set to "false" if you don't want the browser to follow the save post. i.e the user stay in
      * the editor after saving.
      */
-    public static final String REDIRECT = "redirect";
+    public static final String REDIRECT_PARAM = "redirect";
     /**
      * Remove the possibility for the user to "save to computer" and other service in Pixlr Editor
      */
-    public static final String LOCK_TARGET = "locktarget";
+    public static final String LOCK_TARGET_PARAM = "locktarget";
     /**
      * Lock the image title so the user can't change it
      */
-    public static final String LOCK_TITLE = "locktitle";
+    public static final String LOCK_TITLE_PARAM = "locktitle";
     /**
      * Lock the save format, values are jpg, png, bmp, pxd or source, do not include "."
      */
-    public static final String LOCK_TYPE = "locktype";
+    public static final String LOCK_TYPE_PARAM = "locktype";
     /**
      * Set the jpg quality when the user saves the image, values are 0-100
      */
-    public static final String QUALITY = "quality";
+    public static final String QUALITY_PARAM = "quality";
     /**
      * Shows a checkbox on the save dialog that lets the user select "Save as copy"
      */
-    public static final String COPY = "copy";
+    public static final String COPY_PARAM = "copy";
     /**
      * Set the maximum width of an image the user saves
      */
-    public static final String MAX_WIDTH = "maxwidth";
+    public static final String MAX_WIDTH_PARAM = "maxwidth";
     /**
      * Set the maximum height of an image the user saves
      */
-    public static final String MAX_HEIGHT = "maxheight";
+    public static final String MAX_HEIGHT_PARAM = "maxheight";
     /**
      * (Advanced) Change the flash wmode (transparent, opaque, window etc) when you need to use
      * z-index and float HTML over the flash area
      */
-    public static final String WMODE = "wmode ";
+    public static final String WMODE_PARAM = "wmode ";
 
     /**
      * Utility class. No public constructor.
@@ -103,10 +107,11 @@ public class PixlrUtils {
      * It automatically sets the form's method and encoding and only adds to it defined parameters.
      * </p>
      * 
-     * @param formPanel the formPanel
+     * @param formPanel the form panel
      * @param settings the parameters used to call 'Pixlr'
+     * @param resources the resources used to stylish the widget
      */
-    public static void buildFormPanel(FormPanel formPanel, PixlrSettings settings) {
+    public static void buildFormPanel(final FormPanel formPanel, final PixlrSettings settings, final PixlrWidgetResources resources) {
 
         if (settings == null)
             throw new IllegalArgumentException(
@@ -145,6 +150,31 @@ public class PixlrUtils {
             case POST:
                 formPanel.setMethod(FormPanel.METHOD_POST);
                 formPanel.setEncoding(FormPanel.ENCODING_MULTIPART);
+
+                // when using "POST", we must submit the image to 'Pixlr' as raw data attached
+                // to the form. This means that the user must be able to select a file from his
+                // computer and then upload it.This can be done via a FileUpload widget (<input
+                // type="file"...>)
+
+                final FileUpload fileUploadField = new FileUpload();
+                fileUploadField.setName(PixlrUtils.IMAGE_PARAM);
+
+                fileUploadField.addStyleName(resources.css().button());
+                fileUploadField.addStyleName(resources.css().selectedButton());
+                // FIXME: fileUploadField.getElement().setPropertyString("accept", mimeList);
+
+                // we auto submit the form once a valid image has been chosen
+                fileUploadField.addChangeHandler(new ChangeHandler() {
+
+                    @Override
+                    public void onChange(ChangeEvent event) {
+                        if (StringUtils.isNotBlank(fileUploadField.getFilename()))
+                            // FIXME: check uploaded file type against supported image types
+                            formPanel.submit();
+                    }
+                });
+
+                formFieldsHolder.add(fileUploadField);
                 break;
             default:
                 formPanel.setMethod(FormPanel.METHOD_GET);
@@ -152,7 +182,7 @@ public class PixlrUtils {
 
                 // add the 'image' parameter
                 if (StringUtils.isNotBlank(settings.getImage())) {
-                    Hidden imageField = new Hidden(IMAGE, settings.getImage());
+                    Hidden imageField = new Hidden(IMAGE_PARAM, settings.getImage());
                     formFieldsHolder.add(imageField);
                 } else
                     throw new IllegalArgumentException(
@@ -162,80 +192,84 @@ public class PixlrUtils {
 
         // add the 'referrer' parameter when defined
         if (StringUtils.isNotBlank(settings.getReferrer())) {
-            Hidden referrerField = new Hidden(REFERRER, settings.getReferrer());
+            Hidden referrerField = new Hidden(REFERRER_PARAM, settings.getReferrer());
             formFieldsHolder.add(referrerField);
         }
 
         // add the 'icon' parameter when defined
         if (StringUtils.isNotBlank(settings.getIcon())) {
-            Hidden iconField = new Hidden(ICON, settings.getIcon());
+            Hidden iconField = new Hidden(ICON_PARAM, settings.getIcon());
             formFieldsHolder.add(iconField);
         }
 
         // add the 'exit' parameter when defined
         if (StringUtils.isNotBlank(settings.getExit())) {
-            Hidden exitField = new Hidden(EXIT, settings.getExit());
+            Hidden exitField = new Hidden(EXIT_PARAM, settings.getExit());
             formFieldsHolder.add(exitField);
         }
 
         // add the 'title' parameter when defined
         if (StringUtils.isNotBlank(settings.getTitle())) {
-            Hidden titleField = new Hidden(TITLE, settings.getTitle());
+            Hidden titleField = new Hidden(TITLE_PARAM, settings.getTitle());
             formFieldsHolder.add(titleField);
         }
 
         // add the 'type' parameter when defined
         if (settings.getType() != null) {
-            Hidden typeField = new Hidden(TYPE, settings.getType().toString().toLowerCase());
+            Hidden typeField = new Hidden(TYPE_PARAM, settings.getType().toString().toLowerCase());
             formFieldsHolder.add(typeField);
         }
 
         // add the 'target' parameter when defined
         if (StringUtils.isNotBlank(settings.getTarget())) {
-            Hidden targetField = new Hidden(TARGET, settings.getTitle());
+            Hidden targetField = new Hidden(TARGET_PARAM, settings.getTitle());
             formFieldsHolder.add(targetField);
         }
 
         // add the 'redirect' parameter
-        formFieldsHolder.add(new Hidden(REDIRECT, settings.isRedirect() ? "true" : "false"));
+        formFieldsHolder.add(new Hidden(REDIRECT_PARAM, settings.isRedirect() ? "true" : "false"));
 
         // add the 'lockTarget' parameter
-        formFieldsHolder.add(new Hidden(LOCK_TARGET, settings.isLockTarget() ? "true" : "false"));
+        formFieldsHolder.add(new Hidden(LOCK_TARGET_PARAM,
+                settings.isLockTarget() ? "true" : "false"));
 
         // add the 'lockTitle' parameter
-        formFieldsHolder.add(new Hidden(LOCK_TITLE, settings.isLockTitle() ? "true" : "false"));
+        formFieldsHolder.add(new Hidden(LOCK_TITLE_PARAM, settings.isLockTitle() ? "true" : "false"));
 
         // add the 'lockType' parameter when defined
         if (settings.getLockType() != null) {
-            Hidden lockTypeField = new Hidden(LOCK_TYPE,
+            Hidden lockTypeField = new Hidden(LOCK_TYPE_PARAM,
                     settings.getLockType().toString().toLowerCase());
             formFieldsHolder.add(lockTypeField);
         }
 
         // add the 'quality' parameter when valid
         if (settings.getQuality() != null) {
-            Hidden qualityField = new Hidden(QUALITY, String.valueOf(settings.getQuality()));
+            Hidden qualityField = new Hidden(QUALITY_PARAM, String.valueOf(settings.getQuality()));
             formFieldsHolder.add(qualityField);
         }
 
         // add the 'copy' parameter
-        formFieldsHolder.add(new Hidden(COPY, settings.isCopy() ? "true" : "false"));
+        formFieldsHolder.add(new Hidden(COPY_PARAM, settings.isCopy() ? "true" : "false"));
 
         // add the 'maxWidth' parameter when valid
         if (settings.getMaxWidth() != null) {
-            Hidden maxWidthField = new Hidden(MAX_WIDTH, String.valueOf(settings.getMaxWidth()));
+            Hidden maxWidthField = new Hidden(MAX_WIDTH_PARAM,
+                    String.valueOf(settings.getMaxWidth()));
             formFieldsHolder.add(maxWidthField);
         }
 
         // add the 'maxHeight' parameter when valid
         if (settings.getMaxHeight() != null) {
-            Hidden maxHeightField = new Hidden(MAX_HEIGHT, String.valueOf(settings.getMaxHeight()));
+            Hidden maxHeightField = new Hidden(MAX_HEIGHT_PARAM,
+                    String.valueOf(settings.getMaxHeight()));
             formFieldsHolder.add(maxHeightField);
         }
 
         // add the 'wmode' parameter when defined
         if (settings.getWmode() != null) {
-            Hidden wmodeField = new Hidden(WMODE, settings.getWmode().toString().toLowerCase());
+            Hidden wmodeField = new Hidden(WMODE_PARAM,
+                    settings.getWmode().toString().toLowerCase());
             formFieldsHolder.add(wmodeField);
         }
 

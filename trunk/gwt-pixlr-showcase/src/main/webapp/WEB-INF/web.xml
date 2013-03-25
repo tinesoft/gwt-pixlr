@@ -56,19 +56,13 @@
 	<!-- GWT Pixlr : Pixlr Servlet -->
 	<servlet>
 		<servlet-name>gwt-pixlr-servlet</servlet-name>
-		<servlet-class>com.tinesoft.gwt.pixlr.server.PixlrServlet</servlet-class>
-		<init-param>
-			<param-name>com.tinesoft.gwt.pixlr.server.maxMemorySize</param-name>
-			<param-value>10485760</param-value>
-		</init-param>
-		<init-param>
-			<param-name>com.tinesoft.gwt.pixlr.server.maxRequestSize</param-name>
-			<param-value>10485760</param-value>
-		</init-param>
-		<init-param>
-			<param-name>com.tinesoft.gwt.pixlr.server.tempDirectory</param-name>
-			<param-value>showcase/temp/</param-value>
-		</init-param>
+		<servlet-class>com.tinesoft.gwt.pixlr.showcase.server.MyPixlrServlet</servlet-class>
+
+<!-- Uncomment to set a max allowed size, in bytes. -1 indicates, that there is no limit.-->
+<!-- 		<init-param> -->
+<!-- 			<param-name>maxRequestSize</param-name> -->
+<!-- 			<param-value>10485760</param-value> -->
+<!-- 		</init-param> -->
 	</servlet>
 
 	<servlet-mapping>

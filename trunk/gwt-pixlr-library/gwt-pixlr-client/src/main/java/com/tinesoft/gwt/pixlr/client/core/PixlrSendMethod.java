@@ -1,7 +1,6 @@
 
 package com.tinesoft.gwt.pixlr.client.core;
 
-
 /**
  * Enumeration of methods by which image information are sent.
  * 
@@ -28,13 +27,12 @@ public enum PixlrSendMethod {
 
     /**
      * 
-     * @param enumType
      * @param name
      * @return
      */
-    public static PixlrSendMethod valueOf(Class<PixlrSendMethod> enumType, String name) {
+    public static PixlrSendMethod from(String name) {
         if (name == null)
             throw new NullPointerException("Name is null");
-        return Enum.valueOf(PixlrSendMethod.class, name);
+        return PixlrSendMethod.valueOf(name.trim().toUpperCase());
     }
 }

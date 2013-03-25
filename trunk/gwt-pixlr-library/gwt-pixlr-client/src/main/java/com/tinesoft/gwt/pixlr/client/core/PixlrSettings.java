@@ -34,7 +34,7 @@ public class PixlrSettings {
     /**
      * A map of additional parameters that can be passed via 'Target URL'
      */
-    private final Map<String, String> moreParams = new HashMap<String, String>();
+    private final Map<String, String> additionalParameters = new HashMap<String, String>();
 
     /**
      * Gets the name of the referring service for example "Your site name" or "Facebook".
@@ -387,22 +387,22 @@ public class PixlrSettings {
     /**
      * Adds an additional parameter to the result.
      * 
-     * @param parameterName
-     * @param parameterValue
+     * @param parameterName the parameter name
+     * @param parameterValue the parameter value
      */
-    protected void addParameter(String parameterName, String parameterValue) {
-        moreParams.put(parameterName, parameterValue);
+    protected void putAdditionalParameter(String parameterName, String parameterValue) {
+        additionalParameters.put(parameterName, parameterValue);
     }
 
     /**
      * Gets the named additional parameter that has been sent to 'Pixlr' via the 'Target URL'
      * parameter.
      * 
-     * @param parameterName
-     * @return
+     * @param parameterName the parameter name
+     * @return the parameter value
      */
-    public String getParameter(String parameterName) {
-        return moreParams.get(parameterName);
+    public String getAdditionalParameter(String parameterName) {
+        return additionalParameters.get(parameterName);
     }
 
     /**
@@ -411,6 +411,6 @@ public class PixlrSettings {
      * @return
      */
     public Map<String, String> getAdditionalParameters() {
-        return moreParams;
+        return additionalParameters;
     }
 }
