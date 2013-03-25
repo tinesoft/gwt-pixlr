@@ -15,7 +15,7 @@ GWT-Pixlr offers the following components:
 
 = gwt-pixlr-client =
 
-The gwt-pixlr-client component is the core component of the library, given that it is the one that allows to integrate the Pixlr editor view in your UI. It is constituted of the main following:
- * *PixlrWidget:* A widget to add the view in your layout, as a GWT widget
- * *PixlrSettings:* A class encapsulating the IN parameters sent to Pixlr
- * *PixlrSettingsResources*: A [https://developers.google.com/web-toolkit/doc/latest/DevGuideClientBundle ClientBundle] that you can extend to customize the css and images used by the PixlrWidget
+The gwt-pixlr-client component is the core component of the library, given that it is the one that allows to integrate the Pixlr editor view in your UI. It is constituted of the main following elements:
+ * *PixlrWidget*: A widget to add the view in your layout, as a GWT widget
+ * *PixlrSettings*: A class encapsulating the IN parameters sent to Pixlr
+ * *PixlrWidgetResources*: A [https://developers.google.com/web-toolkit/doc/latest/DevGuideClientBundle ClientBundle] that you can extend to customize the css and images used by the PixlrWidget
