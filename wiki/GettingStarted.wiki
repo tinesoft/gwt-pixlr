@@ -168,3 +168,5 @@ PixlrWidget pixlrWidget;
    yourPixlrWidget.setSettings(yourSettings);
 
 }}}
+
+= Using the library (Server Side) =
