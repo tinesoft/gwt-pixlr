@@ -6,7 +6,7 @@ import com.google.gwt.event.shared.EventHandler;
 /**
  * Handler for {@link RevealNestedPresenterEvent}.
  * 
- * @author Tine Kondo<kondotine@gmail.com>
+ * @author Tine Kondo
  */
 public interface RevealNestedPresenterHandler extends EventHandler {
 

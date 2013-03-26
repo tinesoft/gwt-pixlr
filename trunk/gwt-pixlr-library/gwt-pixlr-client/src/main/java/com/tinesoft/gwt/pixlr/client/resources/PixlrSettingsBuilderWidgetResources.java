@@ -8,7 +8,7 @@ import com.tinesoft.gwt.pixlr.client.ui.PixlrSettingsBuilderWidget;
 /**
  * Client bundle for the {@link PixlrSettingsBuilderWidget} css and image resources.
  * 
- * @author Tine Kondo<kondotine@gmail.com>
+ * @author Tine Kondo
  */
 public interface PixlrSettingsBuilderWidgetResources extends ClientBundle {
 

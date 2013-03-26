@@ -4,7 +4,7 @@ package com.tinesoft.gwt.pixlr.client.util;
 /**
  * A Simple String utility class (inspired from Apache commons-lang's StringUtils)
  * 
- * @author Tine Kondo<kondotine@gmail.com>
+ * @author Tine Kondo
  * @version $Id$
  */
 public class StringUtils {

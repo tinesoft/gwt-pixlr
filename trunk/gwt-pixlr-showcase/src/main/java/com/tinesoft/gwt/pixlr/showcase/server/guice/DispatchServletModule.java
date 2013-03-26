@@ -11,7 +11,7 @@ import com.tinesoft.gwt.pixlr.showcase.shared.Config;
 /**
  * Server guice module for servlets and data access.
  * 
- * @author Tine Kondo<kondotine@gmail.com>
+ * @author Tine Kondo
  */
 public class DispatchServletModule extends ServletModule {
 

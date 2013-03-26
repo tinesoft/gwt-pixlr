@@ -17,7 +17,7 @@ import com.tinesoft.gwt.pixlr.client.resources.PixlrWidgetResources;
 /**
  * Utility class for Pixlr
  * 
- * @author Tine Kondo<kondotine@gmail.com>
+ * @author Tine Kondo
  * @version $Id$
  */
 public class PixlrUtils {
@@ -226,15 +226,17 @@ public class PixlrUtils {
             formFieldsHolder.add(targetField);
         }
 
-        // add the 'redirect' parameter
-        formFieldsHolder.add(new Hidden(REDIRECT_PARAM, settings.isRedirect() ? "true" : "false"));
+        // add the 'redirect' parameter when defined and true
+        if (Boolean.TRUE.equals(settings.getRedirect()))
+            formFieldsHolder.add(new Hidden(REDIRECT_PARAM, "true"));
 
-        // add the 'lockTarget' parameter
-        formFieldsHolder.add(new Hidden(LOCK_TARGET_PARAM,
-                settings.isLockTarget() ? "true" : "false"));
+        // add the 'lockTarget' parameter when defined and true
+        if (Boolean.TRUE.equals(settings.getLockTarget()))
+            formFieldsHolder.add(new Hidden(LOCK_TARGET_PARAM, "true"));
 
-        // add the 'lockTitle' parameter
-        formFieldsHolder.add(new Hidden(LOCK_TITLE_PARAM, settings.isLockTitle() ? "true" : "false"));
+        // add the 'lockTitle' parameter when defined and true
+        if (Boolean.TRUE.equals(settings.getLockTitle()))
+            formFieldsHolder.add(new Hidden(LOCK_TITLE_PARAM, "true"));
 
         // add the 'lockType' parameter when defined
         if (settings.getLockType() != null) {
@@ -249,8 +251,9 @@ public class PixlrUtils {
             formFieldsHolder.add(qualityField);
         }
 
-        // add the 'copy' parameter
-        formFieldsHolder.add(new Hidden(COPY_PARAM, settings.isCopy() ? "true" : "false"));
+        // add the 'copy' parameter when defined and true
+        if (Boolean.TRUE.equals(settings.getCopy()))
+            formFieldsHolder.add(new Hidden(COPY_PARAM, "true"));
 
         // add the 'maxWidth' parameter when valid
         if (settings.getMaxWidth() != null) {

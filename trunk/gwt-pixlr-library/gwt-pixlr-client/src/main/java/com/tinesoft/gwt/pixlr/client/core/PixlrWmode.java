@@ -4,12 +4,12 @@ package com.tinesoft.gwt.pixlr.client.core;
 /**
  * Enumeration of all Flash Wmodes.
  * 
- * @author Tine Kondo<kondotine@gmail.com>
+ * @author Tine Kondo
  * @version $Id$
  */
 public enum PixlrWmode {
 
-    TRANSPARENT, OPAQUE, WINDOW;
+    OPAQUE, WINDOW, TRANSPARENT, ;
 
     public static PixlrWmode from(String name) {
         if (name == null)

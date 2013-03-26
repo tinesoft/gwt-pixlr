@@ -11,7 +11,7 @@ import com.tinesoft.gwt.pixlr.showcase.client.util.GWTLog;
 /**
  * Client {@link com.gwtplatform.mvp.client.proxy.PlaceManager}.
  * 
- * @author Tine Kondo<kondotine@gmail.com>
+ * @author Tine Kondo
  */
 public class ClientPlaceManager extends PlaceManagerImpl {
 

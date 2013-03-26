@@ -4,7 +4,7 @@ package com.tinesoft.gwt.pixlr.showcase.shared;
 /**
  * Configurations.
  * 
- * @author Tine Kondo<kondotine@gmail.com>
+ * @author Tine Kondo
  */
 public final class Config {
 

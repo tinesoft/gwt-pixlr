@@ -21,7 +21,7 @@ import com.tinesoft.gwt.pixlr.showcase.client.core.handler.SidebarPageUiHandlers
 /**
  * Sidebar page presenter.
  * 
- * @author Tine Kondo<kondotine@gmail.com>
+ * @author Tine Kondo
  */
 public class SidebarPagePresenter extends Presenter<SidebarPagePresenter.MyView, SidebarPagePresenter.MyProxy> implements SidebarPageUiHandlers, RevealNestedPresenterHandler {
 

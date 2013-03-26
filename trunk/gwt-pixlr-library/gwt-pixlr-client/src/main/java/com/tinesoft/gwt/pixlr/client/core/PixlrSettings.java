@@ -7,29 +7,29 @@ import java.util.Map;
 /**
  * Encapsulates all parameters that can be send to 'Pixlr'.
  * 
- * @author Tine Kondo<kondotine@gmail.com>
+ * @author Tine Kondo
  * @version $Id$
  */
 public class PixlrSettings {
 
+    private PixlrService service = PixlrService.EXPRESS;
+    private PixlrSendMethod method = PixlrSendMethod.GET;
     private String referrer;
     private String icon;
     private String exit;
     private String image;
     private String title;
     private PixlrImageType type;
-    private PixlrSendMethod method = PixlrSendMethod.POST;
     private String target;
-    private boolean redirect = false;
-    private boolean lockTarget;
-    private boolean lockTitle;
+    private Boolean redirect;
+    private Boolean lockTarget;
+    private Boolean lockTitle;
     private PixlrImageType lockType;
     private Integer quality;
-    private boolean copy;
+    private Boolean copy;
     private Integer maxWidth;
     private Integer maxHeight;
     private PixlrWmode wmode;
-    private PixlrService service = PixlrService.EXPRESS;
 
     /**
      * A map of additional parameters that can be passed via 'Target URL'
@@ -176,7 +176,8 @@ public class PixlrSettings {
      * @param method
      */
     public void setMethod(PixlrSendMethod method) {
-        this.method = method;
+        if (method != null)
+            this.method = method;
     }
 
     /**
@@ -202,7 +203,7 @@ public class PixlrSettings {
      * 
      * @return
      */
-    public boolean isRedirect() {
+    public Boolean getRedirect() {
         return redirect;
     }
 
@@ -212,7 +213,7 @@ public class PixlrSettings {
      * 
      * @param redirect
      */
-    public void setRedirect(boolean redirect) {
+    public void setRedirect(Boolean redirect) {
         this.redirect = redirect;
     }
 
@@ -221,7 +222,7 @@ public class PixlrSettings {
      * 
      * @return
      */
-    public boolean isLockTarget() {
+    public Boolean getLockTarget() {
         return lockTarget;
     }
 
@@ -230,7 +231,7 @@ public class PixlrSettings {
      * 
      * @param lockTarget
      */
-    public void setLockTarget(boolean lockTarget) {
+    public void setLockTarget(Boolean lockTarget) {
         this.lockTarget = lockTarget;
     }
 
@@ -239,7 +240,7 @@ public class PixlrSettings {
      * 
      * @return
      */
-    public boolean isLockTitle() {
+    public Boolean getLockTitle() {
         return lockTitle;
     }
 
@@ -248,7 +249,7 @@ public class PixlrSettings {
      * 
      * @param lockTitle
      */
-    public void setLockTitle(boolean lockTitle) {
+    public void setLockTitle(Boolean lockTitle) {
         this.lockTitle = lockTitle;
     }
 
@@ -297,7 +298,7 @@ public class PixlrSettings {
      * 
      * @return
      */
-    public boolean isCopy() {
+    public Boolean getCopy() {
         return copy;
     }
 
@@ -306,7 +307,7 @@ public class PixlrSettings {
      * 
      * @param copy
      */
-    public void setCopy(boolean copy) {
+    public void setCopy(Boolean copy) {
         this.copy = copy;
     }
 
@@ -381,7 +382,8 @@ public class PixlrSettings {
      * @param service
      */
     public void setService(PixlrService service) {
-        this.service = service;
+        if (service != null)
+            this.service = service;
     }
 
     /**

@@ -5,7 +5,7 @@ package com.tinesoft.gwt.pixlr.server;
 /**
  * Enumeration of all states of image that can be returned by 'Pixlr'.
  * 
- * @author Tine Kondo<kondotine@gmail.com>
+ * @author Tine Kondo
  * @version $Id$
  */
 public enum PixlrImageState {

@@ -22,7 +22,7 @@ import com.tinesoft.gwt.pixlr.showcase.client.place.NameTokens;
 /**
  * Home page presenter.
  * 
- * @author Tine Kondo<kondotine@gmail.com>
+ * @author Tine Kondo
  */
 public class HomePagePresenter extends Presenter<HomePagePresenter.MyView, HomePagePresenter.MyProxy> implements HomePageUiHandlers, PixlrSettingsValidatedHandler {
 

@@ -17,7 +17,7 @@ import com.tinesoft.gwt.pixlr.showcase.client.place.NameTokens;
 /**
  * Default error presenter.
  * 
- * @author Tine Kondo<kondotine@gmail.com>
+ * @author Tine Kondo
  */
 public class ErrorPagePresenter extends Presenter<ErrorPagePresenter.MyView, ErrorPagePresenter.MyProxy> implements ErrorPageUiHandlers {
 

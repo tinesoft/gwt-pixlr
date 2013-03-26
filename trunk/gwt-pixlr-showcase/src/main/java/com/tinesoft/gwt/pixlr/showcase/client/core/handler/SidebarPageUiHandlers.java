@@ -8,7 +8,7 @@ import com.tinesoft.gwt.pixlr.client.core.PixlrSettings;
 /**
  * Sidebar page handler.
  * 
- * @author Tine Kondo<kondotine@gmail.com>
+ * @author Tine Kondo
  */
 public interface SidebarPageUiHandlers extends UiHandlers {
 

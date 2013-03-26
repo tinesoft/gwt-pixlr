@@ -12,7 +12,7 @@ import com.google.inject.BindingAnnotation;
 /**
  * Default Place a.k.a. MainPage.
  * 
- * @author Tine Kondo<kondotine@gmail.com>
+ * @author Tine Kondo
  */
 @BindingAnnotation
 @Target({ FIELD, PARAMETER, METHOD })

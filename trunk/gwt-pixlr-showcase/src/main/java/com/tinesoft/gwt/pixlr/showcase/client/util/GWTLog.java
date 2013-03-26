@@ -7,7 +7,7 @@ import com.google.gwt.i18n.client.NumberFormat;
 /**
  * Facade to GWT-Log logging framework.
  * 
- * @author Tine Kondo<kondotine@gmail.com>
+ * @author Tine Kondo
  */
 public final class GWTLog {
 

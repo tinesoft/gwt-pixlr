@@ -8,7 +8,7 @@ import com.google.inject.servlet.GuiceServletContextListener;
 /**
  * Facade for Guice dependency injector container.
  * 
- * @author Tine Kondo<kondotine@gmail.com>
+ * @author Tine Kondo
  */
 public class GuiceServletConfig extends GuiceServletContextListener {
 

@@ -6,7 +6,7 @@ import com.google.gwt.event.shared.EventHandler;
 /**
  * Custom event handler that fires {@link PixlrSettingsValidatedEvent}.
  * 
- * @author Tine Kondo<kondotine@gmail.com>
+ * @author Tine Kondo
  */
 public interface PixlrSettingsValidatedHandler extends EventHandler {
 

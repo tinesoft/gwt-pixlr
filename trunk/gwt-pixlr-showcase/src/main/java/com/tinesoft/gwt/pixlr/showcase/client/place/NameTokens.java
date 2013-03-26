@@ -4,7 +4,7 @@ package com.tinesoft.gwt.pixlr.showcase.client.place;
 /**
  * Contains the unique identifiers of all presenters.
  * 
- * @author Tine Kondo<kondotine@gmail.com>
+ * @author Tine Kondo
  */
 public final class NameTokens {
 

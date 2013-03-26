@@ -8,7 +8,7 @@ import java.util.Map;
 /**
  * Encapsulates the result sent back by the 'Pixlr' service when saving an image.
  * 
- * @author Tine Kondo<kondotine@gmail.com>
+ * @author Tine Kondo
  * @version $Id$
  */
 public class PixlrResult {

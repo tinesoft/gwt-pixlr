@@ -9,7 +9,7 @@ import com.tinesoft.gwt.pixlr.client.ui.PixlrWidget;
 /**
  * Client bundle for the {@link PixlrWidget} css and image resources.
  * 
- * @author Tine Kondo<kondotine@gmail.com>
+ * @author Tine Kondo
  */
 public interface PixlrWidgetResources extends ClientBundle {
 

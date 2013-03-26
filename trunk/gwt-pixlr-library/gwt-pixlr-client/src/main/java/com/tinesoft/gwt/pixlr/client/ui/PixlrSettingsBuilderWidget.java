@@ -32,7 +32,7 @@ import com.tinesoft.gwt.pixlr.client.util.StringUtils;
 /**
  * Simple user interface for generating the {@link PixlrSettings}.
  * 
- * @author Tine Kondo<kondotine@gmail.com>
+ * @author Tine Kondo
  * @version $Id$
  */
 public class PixlrSettingsBuilderWidget extends Composite {
@@ -222,8 +222,41 @@ public class PixlrSettingsBuilderWidget extends Composite {
         fireEvent(new PixlrSettingsValidatedEvent(settings));
     }
 
-    @UiHandler("resetButton")
-    protected void onResetButtonClicked(ClickEvent event) {
+    /**
+     * Sets all the settings displayed in the widget
+     * 
+     * @param settings
+     */
+    public void setSettings(PixlrSettings settings) {
+        serviceListBox.setSelectedIndex(settings.getService().ordinal());
+        methodListBox.setSelectedIndex(settings.getMethod().ordinal());
+
+        referrerTextBox.setValue(settings.getReferrer());
+        iconTextBox.setValue(settings.getIcon());
+        exitTextBox.setValue(settings.getExit());
+        imageTextBox.setValue(settings.getImage());
+        titleTextBox.setValue(settings.getTitle());
+        typeListBox.setSelectedIndex((settings.getType() == null) ? 0 : 1 + settings.getType().ordinal());
+        targetTextBox.setValue(settings.getTarget());
+        Boolean redirect = settings.getRedirect();
+        redirectListBox.setSelectedIndex((redirect == null) ? 0 : redirect ? 1 : 2);
+        Boolean lockTarget = settings.getLockTarget();
+        lockTargetListBox.setSelectedIndex((lockTarget == null) ? 0 : lockTarget ? 1 : 2);
+        Boolean lockTitle = settings.getLockTitle();
+        lockTitleListBox.setSelectedIndex((lockTitle == null) ? 0 : lockTitle ? 1 : 2);
+        lockTypeListBox.setSelectedIndex((settings.getLockType() == null) ? 0 : 1 + settings.getLockType().ordinal());
+        qualityIntegerBox.setText((settings.getQuality() == null) ? "" : String.valueOf(settings.getQuality()));
+        Boolean copy = settings.getCopy();
+        copyListBox.setSelectedIndex((copy == null) ? 0 : copy ? 1 : 2);
+        maxWidthIntegerBox.setText((settings.getMaxWidth() == null) ? "" : String.valueOf(settings.getMaxWidth()));
+        maxHeightIntegerBox.setText((settings.getMaxHeight() == null) ? "" : String.valueOf(settings.getMaxHeight()));
+        wmodeListBox.setSelectedIndex((settings.getWmode() == null) ? 0 : 1 + settings.getWmode().ordinal());
+    }
+
+    /**
+     * Resets all settings displayed in the widget, to their default values.
+     */
+    public void resetSettings() {
         serviceListBox.setSelectedIndex(0);
         methodListBox.setSelectedIndex(0);
 
@@ -243,7 +276,12 @@ public class PixlrSettingsBuilderWidget extends Composite {
         maxWidthIntegerBox.setText("");
         maxHeightIntegerBox.setText("");
         wmodeListBox.setSelectedIndex(0);
+    }
 
+    @UiHandler("resetButton")
+    protected void onResetButtonClicked(ClickEvent event) {
+
+        resetSettings();
     }
 
     @UiHandler("methodListBox")
