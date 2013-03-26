@@ -6,7 +6,7 @@ import com.gwtplatform.mvp.client.UiHandlers;
 /**
  * Error page handler.
  * 
- * @author Tine Kondo<kondotine@gmail.com>
+ * @author Tine Kondo
  */
 public interface ErrorPageUiHandlers extends UiHandlers {
 

@@ -6,7 +6,7 @@ import org.junit.runners.Suite;
 import org.junit.runners.Suite.SuiteClasses;
 
 /**
- * @author Tine Kondo<kondotine@gmail.com>
+ * @author Tine Kondo
  * @version $Id: AllTestSuite.java 2963 2011-07-11 15:03:57Z kondotine $
  */
 @RunWith(Suite.class)

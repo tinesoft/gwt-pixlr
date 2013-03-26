@@ -8,7 +8,7 @@ import com.gwtplatform.mvp.client.proxy.PlaceManager;
  * 
  * @param <T> callback result.
  * 
- * @author Tine Kondo<kondotine@gmail.com>
+ * @author Tine Kondo
  */
 public class NoResultAsyncCallback<T> extends DefaultAsyncCallback<T> {
 

@@ -19,7 +19,7 @@ import com.tinesoft.gwt.pixlr.showcase.client.core.presenter.SidebarPagePresente
  * All {@link com.gwtplatform.mvp.client.Presenter} must be registered here.
  * </p>
  * 
- * @author Tine Kondo<kondotine@gmail.com>
+ * @author Tine Kondo
  */
 @GinModules({ DispatchAsyncModule.class, ClientModule.class })
 public interface ClientGinjector extends Ginjector {

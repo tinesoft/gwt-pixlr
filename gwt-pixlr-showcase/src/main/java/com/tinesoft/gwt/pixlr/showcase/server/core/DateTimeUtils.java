@@ -7,7 +7,7 @@ import java.util.Date;
 /**
  * Provides date and time utility methods.
  * 
- * @author Tine Kondo<kondotine@gmail.com>
+ * @author Tine Kondo
  */
 public final class DateTimeUtils {
 

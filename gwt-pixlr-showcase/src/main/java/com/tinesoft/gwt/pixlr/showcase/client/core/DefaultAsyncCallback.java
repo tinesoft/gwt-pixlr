@@ -10,7 +10,7 @@ import com.tinesoft.gwt.pixlr.showcase.client.util.GWTLog;
  * 
  * @param <T> callback result.
  * 
- * @author Tine Kondo<kondotine@gmail.com>
+ * @author Tine Kondo
  */
 public abstract class DefaultAsyncCallback<T> implements AsyncCallback<T> {
 

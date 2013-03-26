@@ -4,12 +4,12 @@ package com.tinesoft.gwt.pixlr.client.core;
 /**
  * Enumeration of all image types supported by 'Pixlr'
  * 
- * @author Tine Kondo<kondotine@gmail.com>
+ * @author Tine Kondo
  * @version $Id$
  */
 public enum PixlrImageType {
 
-    JPG(".jpg"), BMP(".bmp"), PNG(".png"), PXD(".pxd");
+    JPG(".jpg"), PNG(".png"), BMP(".bmp"), PXD(".pxd");
 
     private final String extension;
 

@@ -4,12 +4,12 @@ package com.tinesoft.gwt.pixlr.client.core;
 /**
  * Enumeration of 'Pixlr' available services.
  * 
- * @author Tine Kondo<kondotine@gmail.com>
+ * @author Tine Kondo
  * @version $Id$
  */
 public enum PixlrService {
 
-    EDITOR("editor"), EXPRESS("express"), O_MATIC("o-matic");
+    EXPRESS("express"), EDITOR("editor"), O_MATIC("o-matic");
 
     private final String value;
 

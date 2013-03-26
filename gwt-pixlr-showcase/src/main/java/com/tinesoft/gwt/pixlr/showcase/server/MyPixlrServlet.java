@@ -6,7 +6,7 @@ import com.tinesoft.gwt.pixlr.server.PixlrServlet;
 
 /**
  * 
- * @author Tine Kondo<kondotine@gmail.com>
+ * @author Tine Kondo
  * @version $Id$
  */
 public class MyPixlrServlet extends PixlrServlet {

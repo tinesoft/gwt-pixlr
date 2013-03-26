@@ -4,7 +4,7 @@ package com.tinesoft.gwt.pixlr.client.core;
 /**
  * Enumeration of methods by which image information are sent.
  * 
- * @author Tine Kondo<kondotine@gmail.com>
+ * @author Tine Kondo
  * @version $Id$
  */
 public enum PixlrSendMethod {

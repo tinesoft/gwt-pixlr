@@ -6,7 +6,7 @@ import org.junit.runners.Suite;
 import org.junit.runners.Suite.SuiteClasses;
 
 /**
- * @author Tine Kondo<kondotine@gmail.com>
+ * @author Tine Kondo
  */
 @RunWith(Suite.class)
 @SuiteClasses(value = {

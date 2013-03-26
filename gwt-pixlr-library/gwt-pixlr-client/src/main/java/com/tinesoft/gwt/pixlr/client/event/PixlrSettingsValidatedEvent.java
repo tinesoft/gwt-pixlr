@@ -9,7 +9,7 @@ import com.tinesoft.gwt.pixlr.client.core.PixlrSettings;
 /**
  * Custom event fired by a {@link PixlrSettingsValidatedHandler} when its settings has changed.
  * 
- * @author Tine Kondo<kondotine@gmail.com>
+ * @author Tine Kondo
  */
 public class PixlrSettingsValidatedEvent extends GwtEvent<PixlrSettingsValidatedHandler> {
 

@@ -27,7 +27,7 @@ import org.slf4j.LoggerFactory;
  * Concrete implementations just have to implement the {@link #handlePixlrResult(PixlrResult)} to
  * handle the saved image and additional parameters that may have been passed.
  * 
- * @author Tine Kondo<kondotine@gmail.com>
+ * @author Tine Kondo
  * @version $Id$
  */
 public abstract class PixlrServlet extends HttpServlet {

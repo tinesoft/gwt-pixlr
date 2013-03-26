@@ -24,7 +24,7 @@ import com.tinesoft.gwt.pixlr.showcase.shared.Config;
 /**
  * Client GIN-jector module.
  * 
- * @author Tine Kondo<kondotine@gmail.com>
+ * @author Tine Kondo
  */
 public class ClientModule extends AbstractPresenterModule {
 

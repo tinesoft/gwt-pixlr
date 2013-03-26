@@ -6,7 +6,7 @@ import com.google.gwt.resources.client.CssResource;
 /**
  * Base CssResource style.
  * 
- * @author Tine Kondo<kondotine@gmail.com>
+ * @author Tine Kondo
  * @version $Id$
  */
 public interface BaseStyle extends CssResource {

@@ -16,7 +16,7 @@ import com.tinesoft.gwt.pixlr.showcase.client.resources.ShowcaseResources;
 /**
  * Home page view.
  * 
- * @author Tine Kondo<kondotine@gmail.com>
+ * @author Tine Kondo
  */
 public class HomePageView extends ViewWithUiHandlers<HomePageUiHandlers> implements HomePagePresenter.MyView {
 

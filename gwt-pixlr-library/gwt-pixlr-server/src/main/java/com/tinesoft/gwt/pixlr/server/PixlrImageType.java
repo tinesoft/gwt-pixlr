@@ -4,7 +4,7 @@ package com.tinesoft.gwt.pixlr.server;
 /**
  * Enumeration of all image types supported by 'Pixlr'
  * 
- * @author Tine Kondo<kondotine@gmail.com>
+ * @author Tine Kondo
  * @version $Id$
  */
 public enum PixlrImageType {

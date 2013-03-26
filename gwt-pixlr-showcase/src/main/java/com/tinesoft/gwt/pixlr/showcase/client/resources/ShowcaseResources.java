@@ -7,7 +7,7 @@ import com.google.gwt.resources.client.CssResource;
 /**
  * Client bundle for the application css and image resources.
  * 
- * @author Tine Kondo<kondotine@gmail.com>
+ * @author Tine Kondo
  */
 public interface ShowcaseResources extends ClientBundle {
 

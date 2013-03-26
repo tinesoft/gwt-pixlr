@@ -21,7 +21,7 @@ import com.tinesoft.gwt.pixlr.client.util.PixlrUtils;
 /**
  * Main widget that allows to integrate 'Pixlr' editor as GWT widget.
  * 
- * @author Tine Kondo<kondotine@gmail.com>
+ * @author Tine Kondo
  * @version $Id$
  */
 public class PixlrWidget extends Composite {

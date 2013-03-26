@@ -6,7 +6,7 @@ import com.gwtplatform.dispatch.server.guice.HandlerModule;
 /**
  * Server guice module.
  * 
- * @author Tine Kondo<kondotine@gmail.com>
+ * @author Tine Kondo
  */
 public class ServerModule extends HandlerModule {
 

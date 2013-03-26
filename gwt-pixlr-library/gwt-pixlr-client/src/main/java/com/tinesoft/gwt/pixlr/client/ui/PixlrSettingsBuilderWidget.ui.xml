@@ -133,9 +133,9 @@
 				<g:customCell styleName="{resources.css.valueCell}">
 					<g:ListBox ui:field="wmodeListBox" visibleItemCount="1" width="100%" title="{i18n.wmode}">
 						<g:item></g:item>
-						<g:item value='TRANSPARENT'>Transparent</g:item>
 						<g:item value='OPAQUE'>Opaque</g:item>
 						<g:item value='WINDOW'>Window</g:item>
+						<g:item value='TRANSPARENT'>Transparent</g:item>
 					</g:ListBox>
 				</g:customCell>
 			</g:row>

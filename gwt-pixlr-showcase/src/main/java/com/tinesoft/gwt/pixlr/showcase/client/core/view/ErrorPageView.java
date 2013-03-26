@@ -15,7 +15,7 @@ import com.tinesoft.gwt.pixlr.showcase.client.core.presenter.ErrorPagePresenter;
 /**
  * Error view.
  * 
- * @author Tine Kondo<kondotine@gmail.com>
+ * @author Tine Kondo
  */
 public class ErrorPageView extends ViewWithUiHandlers<ErrorPageUiHandlers> implements ErrorPagePresenter.MyView {
 
