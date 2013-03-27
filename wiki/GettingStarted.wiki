@@ -202,6 +202,7 @@ public class MyPixlrServlet extends PixlrServlet {
 }}}
 
 == Configuring your web.xml ==
+Modify your web.xml to declare your servlet, and the path to access it.
 
 *web.xml*:
 
@@ -224,6 +225,6 @@ public class MyPixlrServlet extends PixlrServlet {
 	</servlet-mapping>
 }}}
 
-In this example, the servlet will be available at: [http://yoursite.com/pixlr/]
+In this example, the servlet will be available at: [http://yoursite.com/pixlr]
 
-This is the  *target* URL you have to specify when configuring the *PixlrSettings* instance. 'Pixlr' will send to that URL, the information about the saved image.
+This is the  *target* URL you have to specify when configuring the *PixlrSettings* associated with the widget. 'Pixlr' will send to that URL, the information about the saved image.
