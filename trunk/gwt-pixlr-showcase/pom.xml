@@ -77,13 +77,6 @@
 			<scope>test</scope>
 		</dependency>
 
-		<dependency>
-			<!-- Jukito: The combined power of JUnit, Guice and Mockito. -->
-			<groupId>org.jukito</groupId>
-			<artifactId>jukito</artifactId>
-			<scope>test</scope>
-		</dependency>
-
 		<!-- GWT -->
 		<dependency>
 			<!-- GWT-Servlet: server-side GWT components. -->
@@ -177,6 +170,12 @@
 			<groupId>com.gwtplatform</groupId>
 			<artifactId>gwtp-processors</artifactId>
 			<scope>provided</scope>
+		</dependency>
+		
+			<!-- AppEngine dependencies -->
+		<dependency>
+			<groupId>com.google.appengine</groupId>
+			<artifactId>appengine-api-1.0-sdk</artifactId>
 		</dependency>
 	</dependencies>
 

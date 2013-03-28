@@ -36,11 +36,14 @@ public class SidebarPageView extends ViewWithUiHandlers<SidebarPageUiHandlers> i
         widget = binder.createAndBindUi(this);
 
         // default settings,
-        PixlrSettings settings = new PixlrSettings();
+        final PixlrSettings settings = new PixlrSettings();
+        final int i = 1 + Random.nextInt(2);
+
         // we pick 1 random picture of the 3 from demo page: http://developer.pixlr.com
-        int i = 1 + Random.nextInt(2);
         settings.setImage("http://developer.pixlr.com/_image/example" + i + ".jpg");
-        settings.setTarget("http://www.my-showcases.appspot.com/gwt-pixlr/showcase/pixlr");
+        // we set the path to our servlet, that will handle the result from 'Pixlr'
+        settings.setTarget("http://gwt-pixlr.appspot.com/showcase/pixlr");
+
         pixlrSettingsBuilderWidget.setSettings(settings);
     }
 

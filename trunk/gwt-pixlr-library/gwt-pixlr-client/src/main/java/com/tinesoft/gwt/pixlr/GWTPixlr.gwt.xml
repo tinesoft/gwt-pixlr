@@ -4,16 +4,11 @@
 	<!-- Inherit the core Web Toolkit stuff -->
 	<inherits name="com.google.gwt.user.User" />
 
-
 	<!-- Inherit the default GWT style sheet -->
 	<!-- <inherits name="com.google.gwt.user.theme.standard.Standard" /> -->
 	<inherits name="com.google.gwt.user.theme.chrome.Chrome" />
 	<!-- <inherits name="com.google.gwt.user.theme.dark.Dark" /> -->
 
-	<!-- Inherit UiBinder with GIN support -->
-	<inherits name="com.google.gwt.uibinder.GinUiBinder" />
-
-	
 	<!-- source -->
 	<source path="client" excludes="**/*Test.java,**/*TestSuite.java" />
 	<source path="shared" excludes="**/*Test.java,**/*TestSuite.java" />
