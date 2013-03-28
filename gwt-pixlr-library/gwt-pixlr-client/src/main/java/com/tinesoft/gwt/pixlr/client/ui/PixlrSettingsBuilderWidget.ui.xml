@@ -15,7 +15,6 @@
 					<g:ListBox ui:field="serviceListBox" visibleItemCount="1" width="100%" title="{i18n.service}">
 						<g:item value='EXPRESS'>Express</g:item>
 						<g:item value='EDITOR'>Editor</g:item>
-						<g:item value='O_MATIC'>O-Matic</g:item>
 					</g:ListBox>
 				</g:customCell>
 			</g:row>

@@ -14,7 +14,7 @@ public final class Config {
     public static final String SECURITY_COOKIE_NAME = "SHOWCASESESSIONID";
 
     /**
-     * Returns the Google Analytics tracking id for http://my-showcases.appspot.com.
+     * Returns the Google Analytics tracking id for http://gwt-pixlr.appspot.com.
      */
     public static final String GOOGLE_ANALYTICS_TRACKING_ID = "UA-34233197-1";
 

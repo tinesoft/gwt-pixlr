@@ -96,8 +96,9 @@ public abstract class PixlrServlet extends HttpServlet {
             processRequestParameter(entry, result);
 
         }
-        LOG.debug("Parsed result from Pixlr: [title={}, state={}, type={}]", //
-                  new Object[] { result.getTitle(), result.getState(), result.getType() });
+        LOG.debug("Parsed result from Pixlr: [title={}, state={}, type={}, additionalParameters={}]", //
+                  new Object[] { result.getTitle(), result.getState(),//
+                          result.getType(), result.getAdditionalParameters() });
         // Let the concrete implementation handles the result from 'Pixlr'
         handlePixlrResult(result);
     }
@@ -138,8 +139,9 @@ public abstract class PixlrServlet extends HttpServlet {
                 }
             }
 
-            LOG.debug("Parsed result from Pixlr: [title={}, state={}, type={}]", new Object[] {
-                    result.getTitle(), result.getState(), result.getType() });
+            LOG.debug("Parsed result from Pixlr: [title={}, state={}, type={}, additionalParameters={}]",
+                      new Object[] { result.getTitle(), result.getState(),//
+                              result.getType(), result.getAdditionalParameters() });
 
             // Let the concrete implementation handles the result from 'Pixlr'
             handlePixlrResult(result);

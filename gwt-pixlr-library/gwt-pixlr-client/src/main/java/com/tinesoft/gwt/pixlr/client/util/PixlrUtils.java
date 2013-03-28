@@ -139,7 +139,7 @@ public class PixlrUtils {
             formFieldsHolder = new VerticalPanel();
             formPanel.setWidget(formFieldsHolder);
         } else {
-            assert formPanel.getWidget() instanceof Panel : "'formPanel' inner widget must be an instance of 'VerticalPanel'";
+            assert formPanel.getWidget() instanceof VerticalPanel : "'formPanel' inner widget must be an instance of 'VerticalPanel'";
             formFieldsHolder = (VerticalPanel) formPanel.getWidget();
             formFieldsHolder.clear();
 
@@ -220,12 +220,6 @@ public class PixlrUtils {
             formFieldsHolder.add(typeField);
         }
 
-        // add the 'target' parameter when defined
-        if (StringUtils.isNotBlank(settings.getTarget())) {
-            Hidden targetField = new Hidden(TARGET_PARAM, settings.getTitle());
-            formFieldsHolder.add(targetField);
-        }
-
         // add the 'redirect' parameter when defined and true
         if (Boolean.TRUE.equals(settings.getRedirect()))
             formFieldsHolder.add(new Hidden(REDIRECT_PARAM, "true"));
@@ -276,10 +270,34 @@ public class PixlrUtils {
             formFieldsHolder.add(wmodeField);
         }
 
-        // add any additional parameter
-        for (Entry<String, String> entry : settings.getAdditionalParameters().entrySet()) {
-            Hidden field = new Hidden(entry.getKey(), entry.getValue());
-            formFieldsHolder.add(field);
-        }
+        // add the 'target' parameter when defined
+        if (StringUtils.isNotBlank(settings.getTarget())) {
+
+            StringBuilder target = new StringBuilder(settings.getTarget());
+
+            // add any additional parameter to the target URL, so that they can be
+            // passed along by 'Pixlr' to your handler (specified as target): that
+            // is the only way, as for now (27/03/2013) to send non-API parameters
+            boolean first = !target.toString().contains("?");
+            for (Entry<String, String> entry : settings.getAdditionalParameters().entrySet()) {
+                if (!first)
+                    target.append("&");
+                else {
+                    target.append("?");
+                    first = false;
+                }
+
+                target.append(entry.getKey());
+                target.append("=");
+                target.append(entry.getValue());
+                target.append(";");
+            }
+
+            Hidden targetField = new Hidden(TARGET_PARAM, target.toString());
+            formFieldsHolder.add(targetField);
+        } else if (!settings.getAdditionalParameters().isEmpty())
+            throw new IllegalArgumentException(
+                    "'target' URL must be defined to send additional parameters!");
+
     }
 }

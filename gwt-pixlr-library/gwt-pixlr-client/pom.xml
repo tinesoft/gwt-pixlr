@@ -38,13 +38,6 @@
 			<scope>test</scope>
 		</dependency>
 
-		<dependency>
-			<!-- Jukito: The combined power of JUnit, Guice and Mockito. -->
-			<groupId>org.jukito</groupId>
-			<artifactId>jukito</artifactId>
-			<scope>test</scope>
-		</dependency>
-
 		<!-- GWT -->
 		<dependency>
 			<!-- GWT-User: client-side GWT components. -->
@@ -60,14 +53,7 @@
 			<scope>test</scope>
 		</dependency>
 
-		<!-- GWT-Injection -->
-		<dependency>
-			<!-- GWT-Injection: automatic dependency injection to GWT client-side 
-				code (built on top of Guice). -->
-			<groupId>com.google.gwt.inject</groupId>
-			<artifactId>gin</artifactId>
-		</dependency>
-	</dependencies>
+		</dependencies>
 
 	<!-- ==================== -->
 	<!-- Default Operations -->

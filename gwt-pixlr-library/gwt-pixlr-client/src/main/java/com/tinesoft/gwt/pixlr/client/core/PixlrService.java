@@ -9,7 +9,7 @@ package com.tinesoft.gwt.pixlr.client.core;
  */
 public enum PixlrService {
 
-    EXPRESS("express"), EDITOR("editor"), O_MATIC("o-matic");
+    EXPRESS("express"), EDITOR("editor");
 
     private final String value;
 
