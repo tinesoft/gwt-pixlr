@@ -13,7 +13,7 @@ import com.gwtplatform.mvp.client.proxy.Proxy;
 import com.gwtplatform.mvp.client.proxy.RevealContentEvent;
 
 import com.tinesoft.gwt.pixlr.client.core.PixlrSettings;
-import com.tinesoft.gwt.pixlr.client.event.PixlrSettingsValidatedEvent;
+import com.tinesoft.gwt.pixlr.showcase.client.core.event.PixlrSettingsValidatedEvent;
 import com.tinesoft.gwt.pixlr.showcase.client.core.event.RevealNestedPresenterEvent;
 import com.tinesoft.gwt.pixlr.showcase.client.core.event.RevealNestedPresenterHandler;
 import com.tinesoft.gwt.pixlr.showcase.client.core.handler.SidebarPageUiHandlers;

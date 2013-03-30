@@ -9,7 +9,7 @@
 	
 	<ui:with
 		type="com.tinesoft.gwt.pixlr.showcase.client.resources.ShowcaseResources"
-		field="res" />
+		field="resources" />
 
 	<g:FlowPanel>
 		<g:HTMLPanel>

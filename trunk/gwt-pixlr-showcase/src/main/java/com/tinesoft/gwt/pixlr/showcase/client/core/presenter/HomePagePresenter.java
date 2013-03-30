@@ -14,8 +14,8 @@ import com.gwtplatform.mvp.client.proxy.ProxyPlace;
 import com.gwtplatform.mvp.client.proxy.RevealContentEvent;
 
 import com.tinesoft.gwt.pixlr.client.core.PixlrSettings;
-import com.tinesoft.gwt.pixlr.client.event.PixlrSettingsValidatedEvent;
-import com.tinesoft.gwt.pixlr.client.event.PixlrSettingsValidatedHandler;
+import com.tinesoft.gwt.pixlr.showcase.client.core.event.PixlrSettingsValidatedEvent;
+import com.tinesoft.gwt.pixlr.showcase.client.core.event.PixlrSettingsValidatedHandler;
 import com.tinesoft.gwt.pixlr.showcase.client.core.handler.HomePageUiHandlers;
 import com.tinesoft.gwt.pixlr.showcase.client.place.NameTokens;
 

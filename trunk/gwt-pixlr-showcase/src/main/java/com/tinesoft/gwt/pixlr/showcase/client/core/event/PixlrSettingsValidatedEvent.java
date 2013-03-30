@@ -1,5 +1,5 @@
 
-package com.tinesoft.gwt.pixlr.client.event;
+package com.tinesoft.gwt.pixlr.showcase.client.core.event;
 
 import com.google.gwt.event.shared.GwtEvent;
 import com.google.gwt.event.shared.HasHandlers;

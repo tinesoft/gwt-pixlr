@@ -11,6 +11,9 @@ import com.google.gwt.resources.client.CssResource;
  */
 public interface ShowcaseResources extends ClientBundle {
 
+    /**
+     * @return css bundle.
+     */
     interface Style extends CssResource {
 
         String left();
@@ -27,6 +30,14 @@ public interface ShowcaseResources extends ClientBundle {
 
         String button();
 
+        String grid();
+
+        String row();
+
+        String parameterCell();
+
+        String valueCell();
+
         String selectedButton();
 
         String notSelectable();
@@ -36,9 +47,6 @@ public interface ShowcaseResources extends ClientBundle {
         String middle();
     }
 
-    /**
-     * @return css bundle.
-     */
     @Source({ "Style.css" })
     Style css();
 
