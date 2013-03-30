@@ -10,7 +10,7 @@
 
 	<groupId>com.tinesoft</groupId>
 	<artifactId>gwt-pixlr</artifactId>
-	<version>1.0.0</version>
+	<version>1.0.1-SNAPSHOT</version>
 	<packaging>pom</packaging>
 
 	<!-- ============== -->
@@ -682,9 +682,9 @@
 	<!-- Source Control Management -->
 	<!-- =========================== -->
 	<scm>
-		<connection>scm:svn:https://gwt-pixlr.googlecode.com/svn/tags/gwt-pixlr-1.0.0</connection>
-		<developerConnection>scm:svn:https://gwt-pixlr.googlecode.com/svn/tags/gwt-pixlr-1.0.0</developerConnection>
-		<url>https://gwt-pixlr.googlecode.com/svn/tags/gwt-pixlr-1.0.0</url>
+		<connection>scm:svn:https://gwt-pixlr.googlecode.com/svn/trunk/</connection>
+		<developerConnection>scm:svn:https://gwt-pixlr.googlecode.com/svn/trunk/</developerConnection>
+		<url>https://gwt-pixlr.googlecode.com/svn/trunk</url>
 	</scm>
 
 	<!-- ========================= -->
