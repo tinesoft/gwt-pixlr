@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<configuration debug="false">
+
+<!-- Deactivate because Google App Engine does not allow writing files. You can reactivate if you are not using GAE -->
+<!-- 	<property name="LOGS_DIR" value="logs" /> -->
+<!-- 	<property name="LOGS_ARCHIVE_DIR" value="${LOGS_DIR}/archive" /> -->
+
+	<appender name="log-console" class="ch.qos.logback.core.ConsoleAppender">
+		<filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+			<level>DEBUG</level>
+		</filter>	   
+	    <encoder>
+			<charset>UTF-8</charset>
+	      	<pattern>%d{HH:mm:ss} [%-5level] %logger{36} - %msg%n</pattern>
+	    </encoder>
+	</appender>
+	
+<!-- Deactivate because Google App Engine does not allow writing files. You can reactivate if you are not using GAE -->
+<!-- 	<appender name="log-file-info" class="ch.qos.logback.core.rolling.RollingFileAppender"> -->
+<!-- 		<file>${LOGS_DIR}/info.log</file> -->
+<!-- 		<filter class="ch.qos.logback.classic.filter.ThresholdFilter"> -->
+<!-- 			<level>INFO</level> -->
+<!-- 		</filter> -->
+<!-- 		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy"> -->
+<!-- 			<fileNamePattern>${LOGS_ARCHIVE_DIR}/info.%d{yyyy-MM-dd}.log.zip</fileNamePattern> -->
+<!-- 			<maxHistory>30</maxHistory> -->
+<!-- 		</rollingPolicy> -->
+<!-- 		<encoder> -->
+<!-- 			<charset>UTF-8</charset> -->
+<!-- 			<pattern>%d [%-5level] - %-15(%mdc{remoteAddr}) - %msg %throwable{short}%n</pattern> -->
+<!-- 		</encoder> -->
+<!-- 	</appender> -->
+
+<!-- 	<appender name="log-file-error" class="ch.qos.logback.core.rolling.RollingFileAppender"> -->
+<!-- 		<file>${LOGS_DIR}/error.log</file> -->
+<!-- 		<filter class="ch.qos.logback.classic.filter.ThresholdFilter"> -->
+<!-- 			<level>ERROR</level> -->
+<!-- 		</filter> -->
+<!-- 		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy"> -->
+<!-- 			<fileNamePattern>${LOGS_ARCHIVE_DIR}/error.%d{yyyy-ww}.log.zip</fileNamePattern> -->
+<!-- 			<maxHistory>52</maxHistory> -->
+<!-- 		</rollingPolicy> -->
+<!-- 		<encoder> -->
+<!-- 			<charset>UTF-8</charset> -->
+<!-- 			<pattern>%d [%-5level] - %-15(%mdc{remoteAddr}) - %msg %throwable{short}%n</pattern> -->
+<!-- 		</encoder> -->
+<!-- 	</appender> -->
+
+	<logger name="org.hibernate" level="WARN" />
+
+	<root level="DEBUG">
+		<appender-ref ref="log-console" />
+<!-- Deactivate because Google App Engine does not allow writing files. You can reactivate if you are not using GAE -->
+<!-- 		<appender-ref ref="log-file-info" /> -->
+<!-- 		<appender-ref ref="log-file-error" /> -->
+	</root>
+</configuration>
