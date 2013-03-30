@@ -22,7 +22,7 @@ public class HomePageView extends ViewWithUiHandlers<HomePageUiHandlers> impleme
 
     private final Widget widget;
 
-    final ShowcaseResources res;
+    final ShowcaseResources resources;
 
     @UiField
     PixlrWidget pixlrWidget;
@@ -32,8 +32,9 @@ public class HomePageView extends ViewWithUiHandlers<HomePageUiHandlers> impleme
 
     @Inject
     public HomePageView(final Binder binder, final ShowcaseResources resources) {
-        widget = binder.createAndBindUi(this);
-        res = resources;
+        this.widget = binder.createAndBindUi(this);
+        this.resources = resources;
+        this.resources.css().ensureInjected();
     }
 
     @Override

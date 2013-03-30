@@ -2,6 +2,7 @@
 package com.tinesoft.gwt.pixlr.client.resources;
 
 import com.google.gwt.resources.client.ClientBundle;
+import com.google.gwt.resources.client.CssResource.NotStrict;
 import com.google.gwt.resources.client.ImageResource;
 
 import com.tinesoft.gwt.pixlr.client.ui.PixlrWidget;
@@ -13,6 +14,17 @@ import com.tinesoft.gwt.pixlr.client.ui.PixlrWidget;
  */
 public interface PixlrWidgetResources extends ClientBundle {
 
+    /**
+     * The path to the default CSS styles used by this resource.
+     */
+    String DEFAULT_CSS = "com/tinesoft/gwt/pixlr/client/resources/PixlrWidgetStyle.css";
+
+    /**
+     * CSS Style for the PixlrWidget.
+     * 
+     * @author Tine Kondo
+     * @version $Id$
+     */
     interface PixlrWidgetStyle extends BaseStyle {
 
         /**
@@ -38,6 +50,20 @@ public interface PixlrWidgetResources extends ClientBundle {
         String uploadButton();
 
         /**
+         * Defines the style of a large button (used for the 'upload button')
+         * 
+         * @return
+         */
+        String largeButton();
+
+        /**
+         * Defines the style of a button.
+         * 
+         * @return
+         */
+        String button();
+
+        /**
          * Defines the style of the loading indicator that appears when calling 'Pixlr' service.
          * 
          * @return
@@ -45,13 +71,11 @@ public interface PixlrWidgetResources extends ClientBundle {
         String loading();
     }
 
-    @Source({ "BaseStyle.css", "PixlrWidgetStyle.css" })
+    @Source({ BaseStyle.DEFAULT_CSS, DEFAULT_CSS })
+    @NotStrict
     PixlrWidgetStyle css();
 
     @Source("images/loading.gif")
     ImageResource loading();
-
-    @Source("images/unavailable.png")
-    ImageResource unavailable();
 
 }

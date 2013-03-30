@@ -5,8 +5,8 @@
 	ui:generateKeys='com.google.gwt.i18n.rebind.keygen.MD5KeyGenerator'
 	ui:generateLocales='default'>
 
-	<ui:with field='resources' type="com.tinesoft.gwt.pixlr.client.resources.PixlrSettingsBuilderWidgetResources" />
-	<ui:with field='i18n' type="com.tinesoft.gwt.pixlr.client.ui.PixlrSettingsBuilderWidget.I18nMessages" />
+	<ui:with field='resources' type="com.tinesoft.gwt.pixlr.showcase.client.resources.PixlrSettingsBuilderWidgetResources" />
+	<ui:with field='i18n' type="com.tinesoft.gwt.pixlr.showcase.client.ui.PixlrSettingsBuilderWidget.I18nMessages" />
 	<g:FlowPanel>
 		<g:Grid styleName="{resources.css.grid}">
 			<g:row styleName="{resources.css.row}">

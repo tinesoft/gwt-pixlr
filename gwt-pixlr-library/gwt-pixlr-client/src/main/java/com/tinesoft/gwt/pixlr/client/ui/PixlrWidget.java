@@ -2,6 +2,7 @@
 package com.tinesoft.gwt.pixlr.client.ui;
 
 import com.google.gwt.core.client.GWT;
+import com.google.gwt.event.dom.client.LoadEvent;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.uibinder.client.UiHandler;
@@ -19,7 +20,7 @@ import com.tinesoft.gwt.pixlr.client.resources.PixlrWidgetResources;
 import com.tinesoft.gwt.pixlr.client.util.PixlrUtils;
 
 /**
- * Main widget that allows to integrate 'Pixlr' editor as GWT widget.
+ * Main widget that allows to integrate 'Pixlr' editor view as GWT widget.
  * 
  * @author Tine Kondo
  * @version $Id$
@@ -94,12 +95,17 @@ public class PixlrWidget extends Composite {
     }
 
     @UiHandler("formPanel")
-    public void onFormSubmitted(SubmitEvent submitEvent) {
+    protected void onFormSubmitted(SubmitEvent submitEvent) {
         targetFrame.addStyleName(resources.css().loading());
     }
 
     @UiHandler("formPanel")
-    public void onFormSubmitCompleted(SubmitCompleteEvent submitCompleteEvent) {
+    protected void onFormSubmitCompleted(SubmitCompleteEvent submitCompleteEvent) {
+        targetFrame.removeStyleName(resources.css().loading());
+    }
+
+    @UiHandler("targetFrame")
+    protected void onFrameLoad(LoadEvent loadEvent) {
         targetFrame.removeStyleName(resources.css().loading());
     }
 

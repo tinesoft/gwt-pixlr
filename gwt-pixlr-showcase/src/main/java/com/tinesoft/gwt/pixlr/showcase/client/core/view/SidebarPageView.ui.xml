@@ -2,12 +2,150 @@
 
 <ui:UiBinder xmlns:ui='urn:ui:com.google.gwt.uibinder'
 	xmlns:g='urn:import:com.google.gwt.user.client.ui'
-	xmlns:my='urn:import:com.tinesoft.gwt.pixlr.client.ui'
 	ui:generateFormat='com.google.gwt.i18n.rebind.format.PropertiesFormat'
 	ui:generateKeys='com.google.gwt.i18n.rebind.keygen.MD5KeyGenerator'
 	ui:generateLocales='default'>
 	
+	<ui:with field='resources' type="com.tinesoft.gwt.pixlr.showcase.client.resources.ShowcaseResources" />
+	<ui:with field='i18n' type="com.tinesoft.gwt.pixlr.showcase.client.core.view.SidebarPageView.I18nMessages" />
+	
 	<g:ScrollPanel>
-		<my:PixlrSettingsBuilderWidget ui:field="pixlrSettingsBuilderWidget"/>
+	<g:FlowPanel>
+		<g:Grid styleName="{resources.css.grid}">
+			<g:row styleName="{resources.css.row}">
+				<g:customCell styleName="{resources.css.parameterCell}"><g:Label><ui:msg description="'service' parameter">Service:</ui:msg></g:Label></g:customCell>
+				<g:customCell styleName="{resources.css.valueCell}">
+					<g:ListBox ui:field="serviceListBox" visibleItemCount="1" width="100%" title="{i18n.service}">
+						<g:item value='EXPRESS'>Express</g:item>
+						<g:item value='EDITOR'>Editor</g:item>
+					</g:ListBox>
+				</g:customCell>
+			</g:row>
+			<g:row styleName="{resources.css.row}">
+				<g:customCell styleName="{resources.css.parameterCell}"><g:Label><ui:msg description="'method' parameter">Method:</ui:msg></g:Label></g:customCell>
+				<g:customCell styleName="{resources.css.valueCell}">
+					<g:ListBox ui:field="methodListBox" visibleItemCount="1"  width="100%" title="{i18n.method}">
+						  <g:item value='GET'>GET</g:item>
+						  <g:item value='POST'>POST</g:item>
+					</g:ListBox>
+				</g:customCell>
+			</g:row>
+			<g:row styleName="{resources.css.row}">
+				<g:customCell styleName="{resources.css.parameterCell}"><g:Label><ui:msg description="'referrer' parameter">Referrer URL:</ui:msg></g:Label></g:customCell>
+				<g:customCell styleName="{resources.css.valueCell}"><g:TextBox ui:field="referrerTextBox" title="{i18n.referrer}"/></g:customCell>
+			</g:row>
+			<g:row styleName="{resources.css.row}">
+				<g:customCell styleName="{resources.css.parameterCell}"><g:Label><ui:msg description="'icon' parameter">Icon URL:</ui:msg></g:Label></g:customCell>
+				<g:customCell styleName="{resources.css.valueCell}"><g:TextBox ui:field="iconTextBox" title="{i18n.icon}"/></g:customCell>
+			</g:row>
+			<g:row styleName="{resources.css.row}">
+				<g:customCell styleName="{resources.css.parameterCell}"><g:Label><ui:msg description="'exit' parameter">Exit URL:</ui:msg></g:Label></g:customCell>
+				<g:customCell styleName="{resources.css.valueCell}"><g:TextBox ui:field="exitTextBox" title="{i18n.exit}"/></g:customCell>
+			</g:row>
+			<g:row styleName="{resources.css.row}">
+				<g:customCell styleName="{resources.css.parameterCell}"><g:Label><ui:msg description="'image' parameter">Image URL:</ui:msg></g:Label></g:customCell>
+				<g:customCell styleName="{resources.css.valueCell}"><g:TextBox ui:field="imageTextBox" title="{i18n.image}"/></g:customCell>
+			</g:row>
+			<g:row styleName="{resources.css.row}">
+				<g:customCell styleName="{resources.css.parameterCell}"><g:Label><ui:msg description="'title' parameter">Image Title:</ui:msg></g:Label></g:customCell>
+				<g:customCell styleName="{resources.css.valueCell}"><g:TextBox ui:field="titleTextBox" title="{i18n.title}"/></g:customCell>
+			</g:row>
+			<g:row styleName="{resources.css.row}">
+				<g:customCell styleName="{resources.css.parameterCell}"><g:Label><ui:msg description="'type' parameter">Image Type:</ui:msg></g:Label></g:customCell>
+				<g:customCell styleName="{resources.css.valueCell}">
+					<g:ListBox ui:field="typeListBox" visibleItemCount="1" width="100%"  title="{i18n.type}">
+						 <g:item></g:item>
+						  <g:item value='JPG'>JPG</g:item>
+						  <g:item value='PNG'>PNG</g:item>
+						  <g:item value='BMP'>BMP</g:item>
+						  <g:item value='PXD'>PXD</g:item>
+					</g:ListBox>
+				</g:customCell>
+			</g:row>
+			<g:row styleName="{resources.css.row}">
+				<g:customCell styleName="{resources.css.parameterCell}"><g:Label><ui:msg description="'target' parameter">Target URL:</ui:msg></g:Label></g:customCell>
+				<g:customCell styleName="{resources.css.valueCell}"><g:TextBox ui:field="targetTextBox" title="{i18n.target}"/></g:customCell>
+			</g:row>
+			<g:row styleName="{resources.css.row}">
+				<g:customCell styleName="{resources.css.parameterCell}"><g:Label><ui:msg description="'redirect' parameter">Redirect:</ui:msg></g:Label></g:customCell>
+				<g:customCell styleName="{resources.css.valueCell}">
+					<g:ListBox ui:field="redirectListBox" visibleItemCount="1" width="100%" title="{i18n.redirect}">
+						<g:item></g:item>
+						<g:item value='true'>True</g:item>
+						<g:item value='false'>False</g:item>
+					</g:ListBox>
+				</g:customCell>
+			</g:row>
+			<g:row styleName="{resources.css.row}">
+				<g:customCell styleName="{resources.css.parameterCell}"><g:Label><ui:msg description="'lockTarget' parameter">Lock Target:</ui:msg></g:Label></g:customCell>
+				<g:customCell styleName="{resources.css.valueCell}">
+					<g:ListBox ui:field="lockTargetListBox" visibleItemCount="1" width="100%" title="{i18n.lockTarget}">
+						<g:item></g:item>
+						<g:item value='true'>True</g:item>
+						<g:item value='false'>False</g:item>
+					</g:ListBox>
+				</g:customCell>
+			</g:row>
+			<g:row styleName="{resources.css.row}">
+				<g:customCell styleName="{resources.css.parameterCell}"><g:Label><ui:msg description="'lockTitle' parameter">Lock Title:</ui:msg></g:Label></g:customCell>
+				<g:customCell styleName="{resources.css.valueCell}">
+					<g:ListBox ui:field="lockTitleListBox" visibleItemCount="1" width="100%" title="{i18n.lockTitle}">
+						<g:item></g:item>
+						<g:item value='true'>True</g:item>
+						<g:item value='false'>False</g:item>
+					</g:ListBox>
+				</g:customCell>
+			</g:row>
+			<g:row styleName="{resources.css.row}">
+				<g:customCell styleName="{resources.css.parameterCell}"><g:Label><ui:msg description="'lockType' parameter">Lock Type:</ui:msg></g:Label></g:customCell>
+				<g:customCell styleName="{resources.css.valueCell}">
+					<g:ListBox ui:field="lockTypeListBox" visibleItemCount="1" width="100%" title="{i18n.lockType}">
+						<g:item></g:item>
+						<g:item value='JPG'>JPG</g:item>
+						<g:item value='PNG'>PNG</g:item>
+						<g:item value='BMP'>BMP</g:item>
+						<g:item value='PXD'>PXD</g:item>
+					</g:ListBox>
+				</g:customCell>
+			</g:row>
+			<g:row styleName="{resources.css.row}">
+				<g:customCell styleName="{resources.css.parameterCell}"><g:Label><ui:msg description="'quality' parameter">JPG Quality:</ui:msg></g:Label></g:customCell>
+				<g:customCell styleName="{resources.css.valueCell}"><g:IntegerBox ui:field="qualityIntegerBox" title="{i18n.quality}"/></g:customCell>
+			</g:row>
+			<g:row styleName="{resources.css.row}">
+				<g:customCell styleName="{resources.css.parameterCell}"><g:Label><ui:msg description="'copy' parameter">Allow 'Save as Copy':</ui:msg></g:Label></g:customCell>
+				<g:customCell styleName="{resources.css.valueCell}">
+					<g:ListBox ui:field="copyListBox" visibleItemCount="1" width="100%" title="{i18n.copy}">
+						<g:item></g:item>
+						<g:item value='true'>True</g:item>
+						<g:item value='false'>False</g:item>
+					</g:ListBox>
+				</g:customCell>
+			</g:row>
+			<g:row styleName="{resources.css.row}">
+				<g:customCell styleName="{resources.css.parameterCell}"><g:Label><ui:msg description="'maxwidth' parameter">Max Width:</ui:msg></g:Label></g:customCell>
+				<g:customCell styleName="{resources.css.valueCell}"><g:IntegerBox ui:field="maxWidthIntegerBox" title="{i18n.maxWidth}"/></g:customCell>
+			</g:row>
+			<g:row styleName="{resources.css.row}">
+				<g:customCell styleName="{resources.css.parameterCell}"><g:Label><ui:msg description="'maxheight' parameter">Max Height:</ui:msg></g:Label></g:customCell>
+				<g:customCell styleName="{resources.css.valueCell}"><g:IntegerBox ui:field="maxHeightIntegerBox" title="{i18n.maxHeight}"/></g:customCell>
+			</g:row>
+			<g:row styleName="{resources.css.row}">
+				<g:customCell styleName="{resources.css.parameterCell}"><g:Label><ui:msg description="'wmode' parameter">Window Mode:</ui:msg></g:Label></g:customCell>
+				<g:customCell styleName="{resources.css.valueCell}">
+					<g:ListBox ui:field="wmodeListBox" visibleItemCount="1" width="100%" title="{i18n.wmode}">
+						<g:item></g:item>
+						<g:item value='OPAQUE'>Opaque</g:item>
+						<g:item value='WINDOW'>Window</g:item>
+						<g:item value='TRANSPARENT'>Transparent</g:item>
+					</g:ListBox>
+				</g:customCell>
+			</g:row>
+			<g:row styleName="{resources.css.row}">
+				<g:customCell><g:Button ui:field="okButton" addStyleNames="{resources.css.button} {resources.css.selectedButton} {resources.css.right}"><ui:msg description="'OK' button">OK</ui:msg></g:Button></g:customCell>
+				<g:customCell><g:Button ui:field="resetButton" styleName="{resources.css.button}"><ui:msg description="'Reset' button">Reset</ui:msg></g:Button></g:customCell>
+			</g:row>
+		</g:Grid>
+	</g:FlowPanel>
 	</g:ScrollPanel>
 </ui:UiBinder>

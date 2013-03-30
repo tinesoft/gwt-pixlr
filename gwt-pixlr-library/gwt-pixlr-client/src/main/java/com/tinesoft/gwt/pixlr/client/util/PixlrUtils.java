@@ -160,7 +160,8 @@ public class PixlrUtils {
                 fileUploadField.setName(PixlrUtils.IMAGE_PARAM);
 
                 fileUploadField.addStyleName(resources.css().button());
-                fileUploadField.addStyleName(resources.css().selectedButton());
+                fileUploadField.addStyleName(resources.css().largeButton());
+                fileUploadField.addStyleName(resources.css().uploadButton());
                 // FIXME: fileUploadField.getElement().setPropertyString("accept", mimeList);
 
                 // we auto submit the form once a valid image has been chosen
@@ -170,7 +171,8 @@ public class PixlrUtils {
                     public void onChange(ChangeEvent event) {
                         if (StringUtils.isNotBlank(fileUploadField.getFilename()))
                             // FIXME: check uploaded file type against supported image types
-                            formPanel.submit();
+                            fileUploadField.setVisible(false);
+                        formPanel.submit();
                     }
                 });
 

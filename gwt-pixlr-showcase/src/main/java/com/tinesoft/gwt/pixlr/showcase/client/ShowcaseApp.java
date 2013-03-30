@@ -7,8 +7,8 @@ import com.google.gwt.core.client.Scheduler;
 import com.google.gwt.user.client.Command;
 import com.google.gwt.user.client.ui.RootPanel;
 import com.gwtplatform.mvp.client.DelayedBindRegistry;
+
 import com.tinesoft.gwt.pixlr.showcase.client.gin.ClientGinjector;
-import com.tinesoft.gwt.pixlr.showcase.client.resources.ShowcaseResources;
 import com.tinesoft.gwt.pixlr.showcase.client.util.GWTLog;
 
 /**
@@ -35,9 +35,6 @@ public class ShowcaseApp implements EntryPoint {
         // defer all application initialization code to onDeferredLoad() so that the
         // UncaughtExceptionHandler can catch any unexpected exceptions.
         GWTLog.setUncaughtExceptionHandler();
-
-        // we ensure that css are injected
-        ((ShowcaseResources) GWT.create(ShowcaseResources.class)).css().ensureInjected();
 
         Scheduler.get().scheduleDeferred(new Command() {
 

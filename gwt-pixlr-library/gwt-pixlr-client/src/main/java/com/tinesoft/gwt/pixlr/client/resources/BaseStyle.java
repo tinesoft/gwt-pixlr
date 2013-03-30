@@ -11,15 +11,29 @@ import com.google.gwt.resources.client.CssResource;
  */
 public interface BaseStyle extends CssResource {
 
-    String error();
+    /**
+     * The path to the default CSS styles used by this resource.
+     */
+    String DEFAULT_CSS = "com/tinesoft/gwt/pixlr/client/resources/BaseStyle.css";
 
+    /**
+     * Defines the style to clear both left and right floating.
+     * 
+     * @return
+     */
     String clear();
 
+    /**
+     * Defines the style to make contents float to the left.
+     * 
+     * @return
+     */
     String left();
 
+    /**
+     * Defines the style to make contents float to the right.
+     * 
+     * @return
+     */
     String right();
-
-    String button();
-
-    String selectedButton();
 }
