@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<module rename-to="showcase">
+
+	<!-- Core configuration -->
+	<inherits name="com.tinesoft.gwt.pixlr.showcase.ShowcaseApp" />
+
+	<!-- User Agent (Google Chrome) -->
+	<set-property name="user.agent" value="safari" />
+	
+	<!-- GWT Log -->
+	<inherits name="com.allen_sauer.gwt.log.gwt-log-DEBUG" />
+	<set-property name="log_GWTLogger" value="ENABLED" />
+	<set-property name="log_ConsoleLogger" value="ENABLED" />
+
+	<set-property name="log_WindowLogger" value="DISABLED" />
+	<set-property name="log_SystemLogger" value="DISABLED" />
+	<set-property name="log_FirebugLogger" value="DISABLED" />
+	<set-property name="log_DivLogger" value="DISABLED" />
+
+</module>

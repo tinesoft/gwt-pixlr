@@ -1,0 +1,710 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent> 
+		<groupId>org.sonatype.oss</groupId> 
+		<artifactId>oss-parent</artifactId> 
+		<version>7</version> 
+	</parent>
+
+	<groupId>com.tinesoft</groupId>
+	<artifactId>gwt-pixlr</artifactId>
+	<version>1.0.0</version>
+	<packaging>pom</packaging>
+
+	<!-- ============== -->
+	<!-- Informations -->
+	<!-- ============== -->
+	<name>gwt-pixlr - Parent</name>
+	<description>gwt-pixlr Parent POM</description>
+	<url>http://code.google.com/p/gwt-pixlr</url>
+	<inceptionYear>2012</inceptionYear>
+
+	<organization>
+		<name>Tinesoft Corporation</name>
+		<url>http://www.tinesoft.com</url>
+	</organization>
+
+	<developers>
+		<developer>
+			<id>kondotine</id>
+			<name>Tine Kondo</name>
+			<organization>Tinesoft Corporation</organization>
+			<organizationUrl>http://www.tinesoft.com</organizationUrl>
+			<timezone>+1</timezone>
+			<roles>
+				<role>Developer</role>
+			</roles>
+		</developer>
+	</developers>
+
+	<licenses>
+		<license>
+			<name>The Apache Software License, Version 2.0</name>
+			<url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+			<distribution>repo</distribution>
+		</license>
+	</licenses>
+
+	<!-- ============ -->
+	<!-- Properties -->
+	<!-- ============ -->
+	<properties>
+		<!-- Versions -->
+		<gwt-log.version>3.1.8</gwt-log.version>
+		<gwt-dnd.version>3.1.2</gwt-dnd.version>
+		<slf4j.version>1.7.2</slf4j.version>
+		<logback.version>1.0.9</logback.version>
+		<commons-io.version>1.3.2</commons-io.version>
+		<commons-fileupload.version>1.2.2</commons-fileupload.version>
+
+		<junit.version>4.11</junit.version>
+		<jukito.version>1.1</jukito.version>
+
+		<gae.version>1.7.4</gae.version>
+		<gae.home>${settings.localRepository}/com/google/appengine/appengine-java-sdk/${gae.version}/appengine-java-sdk-${gae.version}</gae.home>
+
+		<gwt.version>2.4.0</gwt.version>
+		<gwt-platform.version>0.7</gwt-platform.version>
+
+		<gin.version>2.0.0</gin.version>
+		<guice.version>3.0</guice.version>
+
+		<javax-validation-api.version>1.0.0.GA</javax-validation-api.version>
+		<javax-servlet-api.version>2.5</javax-servlet-api.version>
+		<javax-ws-rs-api.version>1.1.1</javax-ws-rs-api.version>
+		
+			<!-- Plugins -->
+		<lifecycle-mapping-plugin.version>1.0.0</lifecycle-mapping-plugin.version>
+		<maven-eclipse-plugin.version>2.9</maven-eclipse-plugin.version>
+		<maven-clean-plugin.version>2.5</maven-clean-plugin.version>
+		<maven-resources-plugin.version>2.6</maven-resources-plugin.version>
+		<build-helper-maven-plugin.version>1.7</build-helper-maven-plugin.version>
+		<maven-dependency-plugin.version>2.6</maven-dependency-plugin.version>
+		<maven-processor-plugin.version>2.1.1</maven-processor-plugin.version>
+		<maven-compiler-plugin.version>3.0</maven-compiler-plugin.version>
+		<gwt-maven-plugin.version>2.4.0</gwt-maven-plugin.version>
+		<maven-gae-plugin.version>0.9.5</maven-gae-plugin.version>
+		<maven-surefire-plugin.version>2.9</maven-surefire-plugin.version>
+		<maven-source-plugin.version>2.2.1</maven-source-plugin.version>
+		<maven-javadoc-plugin.version>2.8</maven-javadoc-plugin.version>
+		<maven-jar-plugin.version>2.4</maven-jar-plugin.version>
+		<maven-war-plugin.version>2.3</maven-war-plugin.version>
+		<maven-install-plugin.version>2.4</maven-install-plugin.version>
+		<maven-deploy-plugin.version>2.7</maven-deploy-plugin.version>
+		<maven-release-plugin.version>2.4</maven-release-plugin.version>
+		<maven-jarsigner-plugin.version>1.2</maven-jarsigner-plugin.version>
+		<maven-enforcer-plugin.version>1.2</maven-enforcer-plugin.version>
+		<maven-gpg-plugin.version>1.4</maven-gpg-plugin.version>
+		
+		<!-- Sonar -->
+		<sonar.jdbc.url>jdbc:mysql://localhost:3306/sonar?useUnicode=true&amp;characterEncoding=utf8</sonar.jdbc.url>
+		<sonar.jdbc.driver>com.mysql.jdbc.Driver</sonar.jdbc.driver>
+		<sonar.jdbc.username>sonar</sonar.jdbc.username>
+		<sonar.jdbc.password>s0n4r</sonar.jdbc.password>
+		<sonar.host.url>http://localhost:8000/sonar</sonar.host.url>
+
+		<!-- Other -->
+		<maven.compiler.source>1.6</maven.compiler.source>
+		<maven.compiler.target>1.6</maven.compiler.target>
+		<maven.build.timestamp.format>yyyy/MM/dd-HH:mm:ss</maven.build.timestamp.format>
+
+		<javadoc.loc>${basedir}/docs/src/javadoc</javadoc.loc>
+
+		<project.encoding>UTF-8</project.encoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.build.outputEncoding>UTF-8</project.build.outputEncoding>
+	</properties>
+
+	<!-- ========= -->
+	<!-- Modules -->
+	<!-- ========= -->
+	  <modules>
+		<module>gwt-pixlr-library</module>
+		<module>gwt-pixlr-showcase</module>
+	  </modules>
+	<!-- ============== -->
+	<!-- Dependencies -->
+	<!-- ============== -->
+	<dependencyManagement>
+		<dependencies>
+			<!-- Sub-modules -->
+			<dependency>
+				<groupId>${project.groupId}</groupId>
+				<artifactId>gwt-pixlr-library</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>${project.groupId}</groupId>
+				<artifactId>gwt-pixlr-showcase</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+
+			<!-- Logging -->
+			<dependency>
+				<!-- GWT-Log: Logging Library for Google Web Toolkit (GWT) with Deferred 
+					Binding -->
+				<groupId>com.allen-sauer.gwt.log</groupId>
+				<artifactId>gwt-log</artifactId>
+				<version>${gwt-log.version}</version>
+			</dependency>
+			<dependency>
+				<!-- SLF4J: Simple Logging Facade for Java (abstraction for various logging 
+					frameworks). -->
+				<groupId>org.slf4j</groupId>
+				<artifactId>slf4j-api</artifactId>
+				<version>${slf4j.version}</version>
+			</dependency>
+
+			<dependency>
+				<!-- logback: java logging framework. -->
+				<groupId>ch.qos.logback</groupId>
+				<artifactId>logback-classic</artifactId>
+				<version>${logback.version}</version>
+			</dependency>
+
+			<!-- Test -->
+			<dependency>
+				<!-- JUnit: unit testing framework for the Java programming language. -->
+				<groupId>junit</groupId>
+				<artifactId>junit</artifactId>
+				<version>${junit.version}</version>
+				<scope>provided</scope>
+			</dependency>
+
+			<dependency>
+				<!-- Jukito: The combined power of JUnit, Guice and Mockito. -->
+				<groupId>org.jukito</groupId>
+				<artifactId>jukito</artifactId>
+				<version>${jukito.version}</version>
+			</dependency>
+
+			<!-- GWT -->
+			<dependency>
+				<!-- GWT-Servlet: server-side GWT components. -->
+				<groupId>com.google.gwt</groupId>
+				<artifactId>gwt-servlet</artifactId>
+				<version>${gwt.version}</version>
+			</dependency>
+
+			<dependency>
+				<!-- GWT-User: client-side GWT components. -->
+				<groupId>com.google.gwt</groupId>
+				<artifactId>gwt-user</artifactId>
+				<version>${gwt.version}</version>
+			</dependency>
+
+			<dependency>
+				<!-- GWT-Dev: dev GWT components. -->
+				<groupId>com.google.gwt</groupId>
+				<artifactId>gwt-dev</artifactId>
+				<version>${gwt.version}</version>
+			</dependency>
+
+			<!-- Javax API -->
+			<dependency>
+				<!-- Javax Validation API -->
+				<groupId>javax.validation</groupId>
+				<artifactId>validation-api</artifactId>
+				<version>${javax-validation-api.version}</version>
+			</dependency>
+
+			<dependency>
+				<!-- Javax Servlet API -->
+				<groupId>javax.servlet</groupId>
+				<artifactId>servlet-api</artifactId>
+				<version>${javax-servlet-api.version}</version>
+			</dependency>
+			<dependency>
+				<!-- Javax WS RS API -->
+				<groupId>javax.ws.rs</groupId>
+				<artifactId>jsr311-api</artifactId>
+				<version>${javax-ws-rs-api.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>javax.validation</groupId>
+				<artifactId>validation-api</artifactId>
+				<version>${javax-validation-api.version}</version>
+				<classifier>sources</classifier>
+				<scope>provided</scope>
+			</dependency>
+
+			<!-- GWT-Injection -->
+			<dependency>
+				<!-- GWT-Injection: automatic dependency injection to GWT client-side 
+					code (built on top of Guice). -->
+				<groupId>com.google.gwt.inject</groupId>
+				<artifactId>gin</artifactId>
+				<version>${gin.version}</version>
+			</dependency>
+
+			<!-- Guice -->
+			<dependency>
+				<!-- Guice: dependency injection framework for Java. -->
+				<groupId>com.google.inject</groupId>
+				<artifactId>guice</artifactId>
+				<version>${guice.version}</version>
+			</dependency>
+
+			<dependency>
+				<!-- Guice-Servlet: Guice extension for use in web applications and servlet 
+					containers. -->
+				<groupId>com.google.inject.extensions</groupId>
+				<artifactId>guice-servlet</artifactId>
+				<version>${guice.version}</version>
+			</dependency>
+
+			<dependency>
+				<!-- Guice-Persist: Guice extension for working with datastores and persistence 
+					providers. -->
+				<groupId>com.google.inject.extensions</groupId>
+				<artifactId>guice-persist</artifactId>
+				<version>${guice.version}</version>
+			</dependency>
+
+			<!-- GWTPlatform: model-view-presenter framework for GWT. -->
+			<dependency>
+				<!-- GWTPlatform extension for MVP component. -->
+				<groupId>com.gwtplatform</groupId>
+				<artifactId>gwtp-mvp-client</artifactId>
+				<version>${gwt-platform.version}</version>
+			</dependency>
+
+			<dependency>
+				<!-- GWTPlatform extension for client dispatcher component. -->
+				<groupId>com.gwtplatform</groupId>
+				<artifactId>gwtp-dispatch-client</artifactId>
+				<version>${gwt-platform.version}</version>
+			</dependency>
+
+			<dependency>
+				<!-- GWTPlatform extension for server dispatcher component. -->
+				<groupId>com.gwtplatform</groupId>
+				<artifactId>gwtp-dispatch-server-guice</artifactId>
+				<version>${gwt-platform.version}</version>
+			</dependency>
+
+			<dependency>
+				<!-- GWTPlatform extension for crawler component. -->
+				<groupId>com.gwtplatform</groupId>
+				<artifactId>gwtp-crawler</artifactId>
+				<version>${gwt-platform.version}</version>
+			</dependency>
+
+			<dependency>
+				<!-- GWTPlatform extension for annotation component. -->
+				<groupId>com.gwtplatform</groupId>
+				<artifactId>gwtp-processors</artifactId>
+				<version>${gwt-platform.version}</version>
+			</dependency>
+
+			<!-- AppEngine dependencies -->
+			<dependency>
+				<groupId>com.google.appengine</groupId>
+				<artifactId>appengine-api-1.0-sdk</artifactId>
+				<version>${gae.version}</version>
+			</dependency>
+			
+			<!-- Apache Commons -->
+			<dependency>
+				<groupId>commons-io</groupId>
+				<artifactId>commons-io</artifactId>
+				<version>${commons-io.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>commons-fileupload</groupId>
+				<artifactId>commons-fileupload</artifactId>
+				<version>${commons-fileupload.version}</version>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+
+	<!-- =================== -->
+	<!-- Plugin Management -->
+	<!-- =================== -->
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<source>${maven.compiler.source}</source>
+					<target>${maven.compiler.target}</target>
+					<encoding>${project.encoding}</encoding>
+				</configuration>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-resources-plugin</artifactId>
+				<configuration>
+					<encoding>${project.encoding}</encoding>
+				</configuration>
+			</plugin>
+		</plugins>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-eclipse-plugin</artifactId>
+					<version>${maven-eclipse-plugin.version}</version>
+				</plugin>
+
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-clean-plugin</artifactId>
+					<version>${maven-clean-plugin.version}</version>
+				</plugin>
+
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-resources-plugin</artifactId>
+					<version>${maven-resources-plugin.version}</version>
+				</plugin>
+
+				<plugin>
+					<groupId>org.codehaus.mojo</groupId>
+					<artifactId>build-helper-maven-plugin</artifactId>
+					<version>${build-helper-maven-plugin.version}</version>
+				</plugin>
+
+				<plugin>
+					<groupId>org.bsc.maven</groupId>
+					<artifactId>maven-processor-plugin</artifactId>
+					<version>${maven-processor-plugin.version}</version>
+				</plugin>
+
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-compiler-plugin</artifactId>
+					<version>${maven-compiler-plugin.version}</version>
+				</plugin>
+
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-surefire-plugin</artifactId>
+					<version>${maven-surefire-plugin.version}</version>
+				</plugin>
+
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-surefire-report-plugin</artifactId>
+					<version>${maven-surefire-plugin.version}</version>
+				</plugin>
+
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-source-plugin</artifactId>
+					<version>${maven-source-plugin.version}</version>
+					<executions>
+						<execution>
+							<id>attach-sources</id>
+							<phase>verify</phase>
+							<goals>
+								<goal>jar-no-fork</goal>
+							</goals>
+						</execution>
+					</executions>
+				</plugin>
+
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-javadoc-plugin</artifactId>
+					<version>${maven-javadoc-plugin.version}</version>
+					        <executions>
+                                <execution>
+                                    <id>attach-javadocs</id>
+                                    <goals>
+                                        <goal>jar</goal>
+                                    </goals>
+                                </execution>
+                            </executions>
+                            <configuration>
+                                <source>${target.jdk}</source>
+                                <failOnError>true</failOnError>
+                                <quiet>true</quiet>
+                                <links>
+                                    <link>http://download.oracle.com/javase/6/docs/api/</link>
+                                    <link>http://google-web-toolkit.googlecode.com/svn/javadoc/2.0/</link>
+                                    <link>http://google-gin.googlecode.com/svn/trunk/javadoc/</link>
+                                    <link>http://google-guice.googlecode.com/svn/trunk/javadoc/</link>
+                                    <link>http://aopalliance.sourceforge.net/doc/</link>
+                                </links>
+                            </configuration>
+				</plugin>
+
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-jar-plugin</artifactId>
+					<version>${maven-jar-plugin.version}</version>
+				</plugin>
+
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-war-plugin</artifactId>
+					<version>${maven-war-plugin.version}</version>
+				</plugin>
+
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-install-plugin</artifactId>
+					<version>${maven-install-plugin.version}</version>
+				</plugin>
+
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-deploy-plugin</artifactId>
+					<version>${maven-deploy-plugin.version}</version>
+				</plugin>
+
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-release-plugin</artifactId>
+					<configuration>
+						<autoVersionSubmodules>true</autoVersionSubmodules>
+						<mavenExecutorId>forked-path</mavenExecutorId>
+						<useReleaseProfile>false</useReleaseProfile>
+						<arguments>-Psonatype-oss-release -Pprod</arguments>
+					</configuration>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-gpg-plugin</artifactId>
+					<version>${maven-gpg-plugin.version}</version>				
+				</plugin>
+				
+				<plugin>
+					<groupId>org.codehaus.mojo</groupId>
+					<artifactId>gwt-maven-plugin</artifactId>
+					<version>${gwt-maven-plugin.version}</version>
+					<configuration>
+						<appEngineVersion>${gae.version}</appEngineVersion>
+						<appEngineHome>${gae.home}</appEngineHome>
+						<testTimeOut>180</testTimeOut>
+						<generateDirectory>${generated.dir}</generateDirectory>
+					</configuration>
+					<executions>
+						<execution>
+							<configuration>
+								<extraJvmArgs>-Xss1024k -Xmx512M</extraJvmArgs>
+							</configuration>
+							<id>compile-gwt</id>
+							<goals>
+								<goal>compile</goal>
+							</goals>
+							<!-- <phase>compile</phase> FIXME: not working when importing the project in Eclipse -->
+								
+						</execution>
+						<!-- FIXME: not working when importing the project in Eclipse -->
+						<!-- detect the required sources to be included, based on module descriptors of used libraries-->
+<!-- 						<execution>							 -->
+<!-- 							<id>resources-gwt</id> -->
+<!-- 							<phase>generate-sources</phase> -->
+<!-- 							<goals> -->
+<!-- 								<goal>resources</goal> -->
+<!-- 							</goals> -->
+<!-- 						</execution> -->
+						
+						<!-- FIXME: not working when importing the project in Eclipse -->
+						<!-- generate Java CssResource Interface from the given css files-->
+<!-- 						<execution> -->
+<!-- 							<id>generate-css</id> -->
+<!-- 							<phase>generate-sources</phase> -->
+<!-- 							<goals> -->
+<!-- 							  <goal>css</goal> -->
+<!-- 							</goals> -->
+<!-- 						</execution> -->
+					</executions>
+					<dependencies>
+						<dependency>
+							<groupId>com.google.gwt</groupId>
+							<artifactId>gwt-user</artifactId>
+							<version>${gwt.version}</version>
+						</dependency>
+						<dependency>
+							<groupId>com.google.gwt</groupId>
+							<artifactId>gwt-dev</artifactId>
+							<version>${gwt.version}</version>
+						</dependency>
+						<dependency>
+							<groupId>com.google.gwt</groupId>
+							<artifactId>gwt-servlet</artifactId>
+							<version>${gwt.version}</version>
+						</dependency>
+					</dependencies>
+				</plugin>
+
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-enforcer-plugin</artifactId>
+					<version>${maven-enforcer-plugin.version}</version>
+				</plugin>
+
+				<plugin>
+					<groupId>net.kindleit</groupId>
+					<artifactId>maven-gae-plugin</artifactId>
+					<version>${maven-gae-plugin.version}</version>
+					<configuration>
+						<sdkDir>${gae.home}</sdkDir>
+					</configuration>
+					<dependencies>
+						<dependency>
+							<groupId>net.kindleit</groupId>
+							<artifactId>gae-runtime</artifactId>
+							<version>${gae.version}</version>
+							<type>pom</type>
+						</dependency>
+					</dependencies>
+					<executions>
+						<execution>
+							<phase>validate</phase>
+							<goals>
+								<goal>unpack</goal>
+							</goals>
+						</execution>
+					</executions>
+				</plugin>
+
+				<!--This plugin's configuration is used to store Eclipse m2e settings 
+					only. It has no influence on the Maven build itself. -->
+				<plugin>
+					<groupId>org.eclipse.m2e</groupId>
+					<artifactId>lifecycle-mapping</artifactId>
+					<version>${lifecycle-mapping-plugin.version}</version>
+					<configuration>
+						<lifecycleMappingMetadata>
+							<pluginExecutions>
+								<pluginExecution>
+									<pluginExecutionFilter>
+										<groupId>org.datanucleus</groupId>
+										<artifactId>maven-datanucleus-plugin</artifactId>
+										<versionRange>[1.1.4,)</versionRange>
+										<goals>
+											<goal>enhance</goal>
+										</goals>
+									</pluginExecutionFilter>
+									<action>
+										<ignore />
+									</action>
+								</pluginExecution>
+								<pluginExecution>
+									<pluginExecutionFilter>
+										<groupId>net.kindleit</groupId>
+										<artifactId>maven-gae-plugin</artifactId>
+										<versionRange>[0.7.3,)</versionRange>
+										<goals>
+											<goal>unpack</goal>
+										</goals>
+									</pluginExecutionFilter>
+									<action>
+										<execute />
+									</action>
+								</pluginExecution>
+								<pluginExecution>
+									<pluginExecutionFilter>
+										<groupId>org.bsc.maven</groupId>
+										<artifactId>maven-processor-plugin</artifactId>
+										<versionRange>[2.0.5,)</versionRange>
+										<goals>
+											<goal>process</goal>
+											<goal>process-test</goal>
+										</goals>
+									</pluginExecutionFilter>
+									<action>
+										<!-- FIXME: This should be `execute` but it fails in Eclipse. The workaround
+											 is to manually run `mvn install` whenever the code generating files
+											 are changed. -->
+										<ignore />
+									</action>
+								</pluginExecution>
+								<pluginExecution>
+									<pluginExecutionFilter>
+										<groupId>org.apache.maven.plugins</groupId>
+										<artifactId>maven-enforcer-plugin</artifactId>
+										<versionRange>[1.0,)</versionRange>
+										<goals>
+											<goal>enforce</goal>
+										</goals>
+									</pluginExecutionFilter>
+									<action>
+										<ignore />
+									</action>
+								</pluginExecution>
+							</pluginExecutions>
+						</lifecycleMappingMetadata>
+					</configuration>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+	</build>
+
+	<!-- ====================== -->
+	<!-- Profiles -->
+	<!-- ====================== -->
+	
+	<!-- ====================== -->
+	<!-- Reporting Management -->
+	<!-- ====================== -->
+	<reporting>
+		<plugins>
+			<!-- GWT Maven plugin -->
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>gwt-maven-plugin</artifactId>
+				<version>${gwt.version}</version>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-report-plugin</artifactId>
+				<version>${maven-surefire-plugin.version}</version>
+			</plugin>
+		</plugins>
+	</reporting>
+
+	<!-- ================== -->
+	<!-- Issue Management -->
+	<!-- ================== -->
+	<issueManagement>
+        <system>Google Code</system>
+        <url>http://code.google.com/p/gwt-pixlr/issues</url>
+	</issueManagement>
+
+	<!-- =================================== -->
+	<!-- Continuous Integration Management -->
+	<!-- =================================== -->
+	<ciManagement>
+
+	</ciManagement>
+
+	<!-- =========================== -->
+	<!-- Source Control Management -->
+	<!-- =========================== -->
+	<scm>
+		<connection>scm:svn:https://gwt-pixlr.googlecode.com/svn/tags/gwt-pixlr-1.0.0</connection>
+		<developerConnection>scm:svn:https://gwt-pixlr.googlecode.com/svn/tags/gwt-pixlr-1.0.0</developerConnection>
+		<url>https://gwt-pixlr.googlecode.com/svn/tags/gwt-pixlr-1.0.0</url>
+	</scm>
+
+	<!-- ========================= -->
+	<!-- Distribution Management -->
+	<!-- ========================= -->
+	<distributionManagement>
+		<repository> 
+			<id>sonatype.staging.releases</id>
+			<name>Sonatype release repository</name>
+			<url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+		</repository> 
+		<snapshotRepository> 
+			<id>sonatype.snapshots</id>
+			<name>Sonatype snapshot repository</name>
+			<url>https://oss.sonatype.org/content/repositories/snapshots/</url>
+		</snapshotRepository> 
+	</distributionManagement>
+
+	<!-- ========================== -->
+	<!-- Repository Configuration -->
+	<!-- ========================== -->
+
+</project>
