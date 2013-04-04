@@ -171,7 +171,9 @@ PixlrWidget pixlrWidget;
 
 = Using the library (Server Side) =
 
-These are the required steps:
+This part allows you to retrieve the information sent by *Pixlr* each time the user saves the image in the editor view. Those information include the saved image, its title, its state, and its type.
+
+These are the required steps to get started:
  # Create a Servlet by extending *PixlrServlet*
  # Configure your *web.xml*
 
@@ -201,6 +203,8 @@ public class MyPixlrServlet extends PixlrServlet {
 }
 }}}
 
+*PixlrServlet* does all the heavy work underneath (parsing the request, retrieving the parameters,..) and exposes you the result as a convenient *PixlrResult* object created and passed to the abstract method:  {{{ void handlePixlrResult(PixlrResult result)}}}. Inside this method, ou can then do whatever you want with the result, for example: save the image to database or to file system, etc.
+
 == Configuring your web.xml ==
 Modify your web.xml to declare your servlet, and the path to access it.
 
@@ -227,4 +231,4 @@ Modify your web.xml to declare your servlet, and the path to access it.
 
 In this example, the servlet will be available at: [http://yoursite.com/pixlr]
 
-This is the  *target* URL you have to specify when configuring the *PixlrSettings* associated with the widget. 'Pixlr' will send to that URL, the information about the saved image.
+This is the  *target* URL you have to specify when configuring the *PixlrSettings* associated with the widget. *Pixlr* will send to that URL, the information about the saved image.
