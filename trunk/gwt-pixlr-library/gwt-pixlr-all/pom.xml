@@ -87,10 +87,10 @@
 	<!-- Profiles -->
 	<!-- ========== -->
 	<profiles>
-		 <!-- Use 'release' profile to attach to the build the
+		 <!-- Use 'prod' profile to attach to the build the
         compound sources jar and the compound javadoc jar. -->
         <profile>
-            <id>release</id>
+            <id>prod</id>
 
             <properties>
                 <unpackedDependenciesDir>${project.build.directory}/exploded-modules</unpackedDependenciesDir>
