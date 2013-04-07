@@ -26,13 +26,19 @@ public enum PixlrSendMethod {
     POST;
 
     /**
+     * Returns the enum constant of type {@link PixlrSendMethod} with the specified name (case
+     * insensitive).
      * 
-     * @param name
-     * @return
+     * @param name the name of the enum constant
+     * @return the enum constant of type {@link PixlrSendMethod} with the specified name
+     * @throws IllegalArgumentException if enum type {@link PixlrSendMethod} has no constant with
+     *             the specified name
+     * @throws NullPointerException if <tt>name</tt> is null
      */
-    public static PixlrSendMethod from(String name) {
-        if (name == null)
+    public static PixlrSendMethod from(final String name) {
+        if (name == null) {
             throw new NullPointerException("Name is null");
+        }
         return PixlrSendMethod.valueOf(name.trim().toUpperCase());
     }
 }

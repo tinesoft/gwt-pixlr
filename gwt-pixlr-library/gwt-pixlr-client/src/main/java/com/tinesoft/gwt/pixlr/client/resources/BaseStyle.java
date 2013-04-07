@@ -19,21 +19,21 @@ public interface BaseStyle extends CssResource {
     /**
      * Defines the style to clear both left and right floating.
      * 
-     * @return
+     * @return the 'clear' css class name
      */
     String clear();
 
     /**
      * Defines the style to make contents float to the left.
      * 
-     * @return
+     * @return the 'left' css class name
      */
     String left();
 
     /**
      * Defines the style to make contents float to the right.
      * 
-     * @return
+     * @return the 'right' css class name
      */
     String right();
 }

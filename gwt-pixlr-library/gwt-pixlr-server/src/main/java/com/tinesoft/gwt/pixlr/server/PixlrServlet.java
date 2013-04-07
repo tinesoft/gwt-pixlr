@@ -71,28 +71,17 @@ public abstract class PixlrServlet extends HttpServlet {
 
     protected Integer maxRequestSize = null;
 
-    @Override
-    public void init(ServletConfig config) throws ServletException {
-        super.init(config);
-
-        String reqSize = config.getInitParameter(MAX_REQUEST_SIZE_INIT_PARAM);
-
-        if (reqSize != null)
-            maxRequestSize = Integer.parseInt(reqSize);
-
-    }
-
     @SuppressWarnings("unchecked")
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doGet(final HttpServletRequest request, final HttpServletResponse response) throws ServletException, IOException {
 
         LOG.info("New GET request received from URI:'{}'", request.getRequestURL());
 
-        Map<String, String[]> params = request.getParameterMap();
+        final Map<String, String[]> params = request.getParameterMap();
 
-        PixlrResult result = new PixlrResult();
+        final PixlrResult result = new PixlrResult();
 
-        for (Map.Entry<String, String[]> entry : params.entrySet()) {
+        for (final Map.Entry<String, String[]> entry : params.entrySet()) {
             processRequestParameter(entry, result);
 
         }
@@ -104,32 +93,33 @@ public abstract class PixlrServlet extends HttpServlet {
     }
 
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doPost(final HttpServletRequest request, final HttpServletResponse response) throws ServletException, IOException {
         try {
 
             LOG.info("New POST request received from URI:'{}'", request.getRequestURL());
 
             // Check that we have a file upload request
-            boolean isMultipart = ServletFileUpload.isMultipartContent(request);
+            final boolean isMultipart = ServletFileUpload.isMultipartContent(request);
             if (!isMultipart) {
                 LOG.error("Cannot process request. No file to upload.");
                 return;
             }
 
             // Create a new file upload handler
-            ServletFileUpload upload = new ServletFileUpload();
+            final ServletFileUpload upload = new ServletFileUpload();
 
             // Set overall request size constraint
-            if (maxRequestSize != null)
+            if (maxRequestSize != null) {
                 upload.setSizeMax(maxRequestSize);
+            }
 
             // Parse the request
-            FileItemIterator iter = upload.getItemIterator(request);
+            final FileItemIterator iter = upload.getItemIterator(request);
 
-            PixlrResult result = new PixlrResult();
+            final PixlrResult result = new PixlrResult();
 
             while (iter.hasNext()) {
-                FileItemStream item = iter.next();
+                final FileItemStream item = iter.next();
                 if (item.isFormField()) {
                     // Process regular form field (input type="text|radio|checkbox|select,etc).
                     processFormParameter(item, result);
@@ -146,71 +136,93 @@ public abstract class PixlrServlet extends HttpServlet {
             // Let the concrete implementation handles the result from 'Pixlr'
             handlePixlrResult(result);
 
-        } catch (FileUploadException e) {
+        } catch (final FileUploadException e) {
             throw new ServletException("Cannot parse multipart request.", e);
         }
     }
 
-    private void processRequestParameter(Map.Entry<String, String[]> fieldEntry, PixlrResult result) throws IOException {
+    /**
+     * Abstract method called after finishing parsing the request sent by Pixlr each time the user
+     * saves its changes on the image being edited.
+     * 
+     * <p>
+     * This allows you to easily handle the returned image information (for example: save image to
+     * database , to file system, etc).
+     * </p>
+     * 
+     * @param result a convenient {@link PixlrResult} object, containing the information about the
+     *            edited image, as well as any additional parameter you may have sent when calling
+     *            the service
+     */
+    protected abstract void handlePixlrResult(PixlrResult result);
 
-        assert result != null : "processRequestParamter(): 'resut' cannot be null!";
-        assert fieldEntry != null : "processRequestParamter(): 'fieldEntry' cannot be null!";
+    @Override
+    public void init(final ServletConfig config) throws ServletException {
+        super.init(config);
 
-        String fieldName = fieldEntry.getKey();
-        String fieldValue = fieldEntry.getValue()[0];
+        final String reqSize = config.getInitParameter(MAX_REQUEST_SIZE_INIT_PARAM);
 
-        if (IMAGE_PARAM.equals(fieldName)) {
-            // 'fiedlValue' contains the URL to the image
-            final URL url = new URL(fieldValue);
-            URLConnection urlConnection = url.openConnection();
-            result.setImage(urlConnection.getInputStream());
-        } else if (TITLE_PARAM.equals(fieldName))
-            result.setTitle(fieldValue);
-        else if (TYPE_PARAM.equals(fieldName))
-            result.setType(PixlrImageType.from(fieldValue));
-        else if (STATE_PARAM.equals(fieldName))
-            result.setState(PixlrImageState.from(fieldValue));
-        else
-            result.putAdditionalParameter(fieldName, fieldValue);
+        if (reqSize != null) {
+            maxRequestSize = Integer.parseInt(reqSize);
+        }
 
     }
 
-    private void processFormParameter(FileItemStream fileItem, PixlrResult result) throws IOException {
+    private void processFormParameter(final FileItemStream fileItem, final PixlrResult result) throws IOException {
 
         assert result != null : "processFormField(): 'resut' cannot be null!";
         assert fileItem.isFormField() : "processFormField(): 'fileItem' must be a form field!";
 
-        String fieldName = fileItem.getFieldName();
-        String fieldValue = Streams.asString(fileItem.openStream());
+        final String fieldName = fileItem.getFieldName();
+        final String fieldValue = Streams.asString(fileItem.openStream());
 
-        if (TITLE_PARAM.equals(fieldName))
+        if (TITLE_PARAM.equals(fieldName)) {
             result.setTitle(fieldValue);
-        else if (TYPE_PARAM.equals(fieldName))
+        } else if (TYPE_PARAM.equals(fieldName)) {
             result.setType(PixlrImageType.from(fieldValue));
-        else if (STATE_PARAM.equals(fieldName))
+        } else if (STATE_PARAM.equals(fieldName)) {
             result.setState(PixlrImageState.from(fieldValue));
-        else
+        } else {
             result.putAdditionalParameter(fieldName, fieldValue);
+        }
 
     }
 
-    private void processUploadedParameter(FileItemStream fileItem, PixlrResult result) throws IOException {
+    private void processRequestParameter(final Map.Entry<String, String[]> fieldEntry, final PixlrResult result) throws IOException {
+
+        assert result != null : "processRequestParamter(): 'resut' cannot be null!";
+        assert fieldEntry != null : "processRequestParamter(): 'fieldEntry' cannot be null!";
+
+        final String fieldName = fieldEntry.getKey();
+        final String fieldValue = fieldEntry.getValue()[0];
+
+        if (IMAGE_PARAM.equals(fieldName)) {
+            // 'fiedlValue' contains the URL to the image
+            final URL url = new URL(fieldValue);
+            final URLConnection urlConnection = url.openConnection();
+            result.setImage(urlConnection.getInputStream());
+        } else if (TITLE_PARAM.equals(fieldName)) {
+            result.setTitle(fieldValue);
+        } else if (TYPE_PARAM.equals(fieldName)) {
+            result.setType(PixlrImageType.from(fieldValue));
+        } else if (STATE_PARAM.equals(fieldName)) {
+            result.setState(PixlrImageState.from(fieldValue));
+        } else {
+            result.putAdditionalParameter(fieldName, fieldValue);
+        }
+
+    }
+
+    private void processUploadedParameter(final FileItemStream fileItem, final PixlrResult result) throws IOException {
 
         assert result != null : "processUploadedField(): 'resut' cannot be null!";
         assert !fileItem.isFormField() : "processUploadedField(): 'fileItem' cannot be a form field!";
 
-        String fieldName = fileItem.getFieldName();
+        final String fieldName = fileItem.getFieldName();
 
-        if (IMAGE_PARAM.equals(fieldName))
+        if (IMAGE_PARAM.equals(fieldName)) {
             result.setImage(fileItem.openStream());
+        }
 
     }
-
-    /**
-     * Called when the {@link PixlrResult result} from 'Pixlr' is ready. This allows to handle the
-     * returned image (save it to database or file system, return it ba.
-     * 
-     * @param result
-     */
-    protected abstract void handlePixlrResult(PixlrResult result);
 }

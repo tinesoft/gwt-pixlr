@@ -6,28 +6,44 @@
   margin: -1px;
 }
 
-.formPanel {
+.formPanel {  
+  position:absolute;
   width:100%;
   height:auto;
-  position:absolute;
   top:45%;
   left:0px;
   z-index:10;
 }
 
+.uploadPanel
+{
+	width:242px;
+	margin:0px auto;
+}
 
-
-@sprite .loading {
+@sprite .loadingIcon {
   background-position: center;
   background-color: #eee;
   gwt-image: 'loading';
 }
 
+@sprite .uploadIcon
+ {
+	display: inline-block;	
+	line-height: 30px;
+	vertical-align: text-top;
+	gwt-image: 'upload';
+}
+
+.uploadText
+{
+	display:inline;
+	margin-left:2px;
+}
+
 .button {
   display: inline-block;
   padding: 4px 12px;
-  margin-left:50%;
-  margin-right:50%;
   font-size: 14px;
   line-height: 20px;
   color: #333333;
@@ -65,7 +81,8 @@
           border-radius: 6px;
 }
 
-.uploadButton {
+.uploadButton {  
+  display:inline-block;
   color: #ffffff;
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
   background-color: #0044cc;

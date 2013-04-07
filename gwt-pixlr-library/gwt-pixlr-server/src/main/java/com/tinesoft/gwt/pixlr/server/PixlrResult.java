@@ -24,57 +24,60 @@ public class PixlrResult {
     private final Map<String, String> additionalParameters = new HashMap<String, String>();
 
     /**
-     * Gets the title of the image the user typed in when saving..
+     * Gets the named additional parameter that has been sent to 'Pixlr' via the 'Target URL'
+     * parameter.
      * 
-     * @retur the titlee
+     * @param parameterName the parameter name
+     * @return the parameter value
      */
-    public String getTitle() {
-        return title;
+    public String getAdditionalParameter(final String parameterName) {
+        return additionalParameters.get(parameterName);
     }
 
     /**
-     * Sets the title of the image the user typed in when saving.
+     * Gets the map of additional parameters.
      * 
-     * @param title the new title
+     * @return the additional parameters map
      */
-    protected void setTitle(String title) {
-        this.title = title;
+    public Map<String, String> getAdditionalParameters() {
+        return additionalParameters;
     }
 
     /**
-     * Gets the type of the image, can be one of the values of {@link PixlrImagetype}.
+     * Gets the input stream to the image, sent by 'Pixlr' (either as posted raw data or via its
+     * URL) after the user has saved it.
      * 
-     * @return the type
+     * @return the {@link InputStream} to the image
      */
-    public PixlrImageType getType() {
-        return type;
-    }
-
-    /**
-     * Sets the type of the image, can be one of the values of {@link PixlrImagetype}.
-     * 
-     * @param type the new type
-     */
-    protected void setType(PixlrImageType type) {
-        this.type = type;
+    public InputStream getImage() {
+        return image;
     }
 
     /**
      * Gets the state of the image, can be one of the values of {@link PixlrImageState}.
      * 
-     * @return the state
+     * @return the image state
      */
     public PixlrImageState getState() {
         return state;
     }
 
     /**
-     * Sets the state of the image, can be one of the values of {@link PixlrImageState}.
+     * Gets the title of the image the user typed in when saving..
      * 
-     * @param state the new state
+     * @return the image title
      */
-    protected void setState(PixlrImageState state) {
-        this.state = state;
+    public String getTitle() {
+        return title;
+    }
+
+    /**
+     * Gets the type of the image, can be one of the values of {@link PixlrImagetype}.
+     * 
+     * @return the image type
+     */
+    public PixlrImageType getType() {
+        return type;
     }
 
     /**
@@ -83,47 +86,44 @@ public class PixlrResult {
      * @param parameterName the parameter name
      * @param parameterValue the parameter value
      */
-    protected void putAdditionalParameter(String parameterName, String parameterValue) {
+    protected void putAdditionalParameter(final String parameterName, final String parameterValue) {
         additionalParameters.put(parameterName, parameterValue);
-    }
-
-    /**
-     * Gets the named additional parameter that has been sent to 'Pixlr' via the 'Target URL'
-     * parameter.
-     * 
-     * @param parameterName the parameter name
-     * @return
-     */
-    public String getAdditionalParameter(String parameterName) {
-        return additionalParameters.get(parameterName);
-    }
-
-    /**
-     * Gets the input stream to the image, sent by 'Pixlr' (either as posted raw data or via its
-     * URL) after the user has saved it.
-     * 
-     * @return
-     */
-    public InputStream getImage() {
-        return image;
     }
 
     /**
      * Sets the input stream to image, sent by 'Pixlr' (either as posted raw data or via its URL)
      * after the user has saved it.
      * 
-     * @param image
+     * @param image the {@link InputStream} to the image
      */
-    protected void setImage(InputStream imageInputStream) {
-        this.image = imageInputStream;
+    protected void setImage(final InputStream imageInputStream) {
+        image = imageInputStream;
     }
 
     /**
-     * Gets the map of additional parameters.
+     * Sets the state of the image, can be one of the values of {@link PixlrImageState}.
      * 
-     * @return
+     * @param state the image state
      */
-    public Map<String, String> getAdditionalParameters() {
-        return additionalParameters;
+    protected void setState(final PixlrImageState state) {
+        this.state = state;
+    }
+
+    /**
+     * Sets the title of the image the user typed in when saving.
+     * 
+     * @param title the image title
+     */
+    protected void setTitle(final String title) {
+        this.title = title;
+    }
+
+    /**
+     * Sets the type of the image, can be one of the values of {@link PixlrImagetype}.
+     * 
+     * @param type the image type
+     */
+    protected void setType(final PixlrImageType type) {
+        this.type = type;
     }
 }
