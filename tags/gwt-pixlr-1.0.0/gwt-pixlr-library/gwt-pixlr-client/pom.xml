@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<groupId>com.tinesoft</groupId>
+		<artifactId>gwt-pixlr-library</artifactId>
+		<version>1.0.0</version>
+	</parent>
+
+	<artifactId>gwt-pixlr-client</artifactId>
+	<packaging>jar</packaging>
+
+	<!-- ============== -->
+	<!-- Informations -->
+	<!-- ============== -->
+	<name>gwt-pixlr-client</name>
+	<description>Client-side components of the gwt-pixlr-library.</description>
+
+	<!-- ============ -->
+	<!-- Properties -->
+	<!-- ============ -->
+	<properties>
+		<target.dir>target/dev</target.dir>
+		<root-test-suite.junit>com/tinesoft/gwt/pixlr/client/AllTestSuite.java</root-test-suite.junit>
+	</properties>
+
+	<!-- ============== -->
+	<!-- Dependencies -->
+	<!-- ============== -->
+	<dependencies>
+		<!-- Test -->
+		<dependency>
+			<!-- JUnit: unit testing framework for the Java programming language. -->
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<scope>test</scope>
+		</dependency>
+
+		<!-- GWT -->
+		<dependency>
+			<!-- GWT-User: client-side GWT components. -->
+			<groupId>com.google.gwt</groupId>
+			<artifactId>gwt-user</artifactId>
+			<scope>provided</scope>
+		</dependency>
+
+		<dependency>
+			<!-- GWT-Dev: dev GWT components. -->
+			<groupId>com.google.gwt</groupId>
+			<artifactId>gwt-dev</artifactId>
+			<scope>test</scope>
+		</dependency>
+
+		</dependencies>
+
+	<!-- ==================== -->
+	<!-- Default Operations -->
+	<!-- ==================== -->
+	<build>
+		<resources>
+			<resource>
+				<directory>src/main/java</directory>
+				<includes>
+					<include>**/*.java</include>
+					<include>**/*.ui.xml</include>
+					<include>**/*.gwt.xml</include>
+				</includes>
+			</resource>
+			<resource>
+				<directory>src/main/resources</directory>
+			</resource>
+		</resources>
+
+		<plugins>
+			<!-- JUnit Test Suites -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<configuration>
+					<includes>
+						<!-- don't run individual tests but only test suites -->
+						<include>${root-test-suite.junit}</include>
+					</includes>
+				</configuration>
+			</plugin>
+
+		</plugins>
+	</build>
+
+	<!-- =========== -->
+	<!-- Reporting -->
+	<!-- =========== -->
+	<reporting>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-report-plugin</artifactId>
+				<configuration>
+					<aggregate>true</aggregate>
+				</configuration>
+			</plugin>
+		</plugins>
+	</reporting>
+
+	<!-- ========== -->
+	<!-- Profiles -->
+	<!-- ========== -->
+	<profiles>
+		<!-- HUDSON : Continous Integration -->
+		<profile>
+			<id>continous-integration</id>
+			<properties>
+				<root-test-suite.junit>com/tinesoft/gwt/pixlr/client/ContinousIntegrationTestSuite.java</root-test-suite.junit>
+			</properties>
+		</profile>
+
+		<!-- HUDSON : Nightly Build -->
+		<profile>
+			<id>nightly-build</id>
+			<properties>
+				<root-test-suite.junit>com/tinesoft/gwt/pixlr/client/NightlyBuildTestSuite.java</root-test-suite.junit>
+			</properties>
+		</profile>
+	</profiles>
+</project>
