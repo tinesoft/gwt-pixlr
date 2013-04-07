@@ -10,7 +10,7 @@
 
 	<groupId>com.tinesoft</groupId>
 	<artifactId>gwt-pixlr</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>1.0.0</version>
 	<packaging>pom</packaging>
 
 	<!-- ============== -->
@@ -586,7 +586,7 @@
 										</goals>
 									</pluginExecutionFilter>
 									<action>
-										<ignore/>
+										<ignore />
 									</action>
 								</pluginExecution>
 								<pluginExecution>
@@ -599,7 +599,7 @@
 										</goals>
 									</pluginExecutionFilter>
 									<action>
-										<execute/>
+										<execute />
 									</action>
 								</pluginExecution>
 								<pluginExecution>
@@ -616,7 +616,7 @@
 										<!-- FIXME: This should be `execute` but it fails in Eclipse. The workaround
 											 is to manually run `mvn install` whenever the code generating files
 											 are changed. -->
-										<ignore/>
+										<ignore />
 									</action>
 								</pluginExecution>
 								<pluginExecution>
@@ -629,7 +629,7 @@
 										</goals>
 									</pluginExecutionFilter>
 									<action>
-										<ignore/>
+										<ignore />
 									</action>
 								</pluginExecution>
 							</pluginExecutions>
@@ -682,9 +682,9 @@
 	<!-- Source Control Management -->
 	<!-- =========================== -->
 	<scm>
-		<connection>scm:svn:https://gwt-pixlr.googlecode.com/svn/trunk/</connection>
-		<developerConnection>scm:svn:https://gwt-pixlr.googlecode.com/svn/trunk/</developerConnection>
-		<url>https://gwt-pixlr.googlecode.com/svn/trunk</url>
+		<connection>scm:svn:https://gwt-pixlr.googlecode.com/svn/tags/gwt-pixlr-1.0.0</connection>
+		<developerConnection>scm:svn:https://gwt-pixlr.googlecode.com/svn/tags/gwt-pixlr-1.0.0</developerConnection>
+		<url>https://gwt-pixlr.googlecode.com/svn/tags/gwt-pixlr-1.0.0</url>
 	</scm>
 
 	<!-- ========================= -->
