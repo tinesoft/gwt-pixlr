@@ -5,12 +5,12 @@ import java.util.Map.Entry;
 
 import com.google.gwt.event.dom.client.ChangeEvent;
 import com.google.gwt.event.dom.client.ChangeHandler;
-import com.google.gwt.user.client.ui.FileUpload;
 import com.google.gwt.user.client.ui.FormPanel;
 import com.google.gwt.user.client.ui.Hidden;
 import com.google.gwt.user.client.ui.Panel;
 import com.google.gwt.user.client.ui.VerticalPanel;
 
+import com.tinesoft.gwt.pixlr.client.core.CustomFileUpload;
 import com.tinesoft.gwt.pixlr.client.core.PixlrSettings;
 import com.tinesoft.gwt.pixlr.client.resources.PixlrWidgetResources;
 
@@ -94,13 +94,6 @@ public class PixlrUtils {
     public static final String WMODE_PARAM = "wmode ";
 
     /**
-     * Utility class. No public constructor.
-     */
-    private PixlrUtils() {
-
-    }
-
-    /**
      * Initializes the given {@link FormPanel formPanel} used to send the request to 'Pixlr', based
      * on the given {@link PixlrSettings settings}.
      * <p>
@@ -113,13 +106,15 @@ public class PixlrUtils {
      */
     public static void buildFormPanel(final FormPanel formPanel, final PixlrSettings settings, final PixlrWidgetResources resources) {
 
-        if (settings == null)
+        if (settings == null) {
             throw new IllegalArgumentException(
                     "PixlrUtils.buildFormPanel(): 'settings' cannot be null!");
+        }
 
-        if (formPanel == null)
+        if (formPanel == null) {
             throw new IllegalArgumentException(
                     "PixlrUtils.buildFormPanel(): 'formPanel' cannot be null!");
+        }
 
         if (settings.getService() == null) {
             throw new IllegalArgumentException(
@@ -139,8 +134,8 @@ public class PixlrUtils {
             formFieldsHolder = new VerticalPanel();
             formPanel.setWidget(formFieldsHolder);
         } else {
-            assert formPanel.getWidget() instanceof VerticalPanel : "'formPanel' inner widget must be an instance of 'VerticalPanel'";
-            formFieldsHolder = (VerticalPanel) formPanel.getWidget();
+            assert formPanel.getWidget() instanceof Panel : "'formPanel' inner widget must be an instance of 'Panel'";
+            formFieldsHolder = (Panel) formPanel.getWidget();
             formFieldsHolder.clear();
 
         }
@@ -156,22 +151,18 @@ public class PixlrUtils {
                 // computer and then upload it.This can be done via a FileUpload widget (<input
                 // type="file"...>)
 
-                final FileUpload fileUploadField = new FileUpload();
+                final CustomFileUpload fileUploadField = new CustomFileUpload(resources);
                 fileUploadField.setName(PixlrUtils.IMAGE_PARAM);
-
-                fileUploadField.addStyleName(resources.css().button());
-                fileUploadField.addStyleName(resources.css().largeButton());
-                fileUploadField.addStyleName(resources.css().uploadButton());
-                // FIXME: fileUploadField.getElement().setPropertyString("accept", mimeList);
 
                 // we auto submit the form once a valid image has been chosen
                 fileUploadField.addChangeHandler(new ChangeHandler() {
 
                     @Override
-                    public void onChange(ChangeEvent event) {
-                        if (StringUtils.isNotBlank(fileUploadField.getFilename()))
+                    public void onChange(final ChangeEvent event) {
+                        if (StringUtils.isNotBlank(fileUploadField.getFilename())) {
                             // FIXME: check uploaded file type against supported image types
                             fileUploadField.setVisible(false);
+                        }
                         formPanel.submit();
                     }
                 });
@@ -184,90 +175,97 @@ public class PixlrUtils {
 
                 // add the 'image' parameter
                 if (StringUtils.isNotBlank(settings.getImage())) {
-                    Hidden imageField = new Hidden(IMAGE_PARAM, settings.getImage());
+                    final Hidden imageField = new Hidden(IMAGE_PARAM, settings.getImage());
                     formFieldsHolder.add(imageField);
-                } else
+                } else {
                     throw new IllegalArgumentException(
                             "'image' parameter cannot be null when using 'GET' method to request 'Pixlr'!");
+                }
 
         }
 
         // add the 'referrer' parameter when defined
         if (StringUtils.isNotBlank(settings.getReferrer())) {
-            Hidden referrerField = new Hidden(REFERRER_PARAM, settings.getReferrer());
+            final Hidden referrerField = new Hidden(REFERRER_PARAM, settings.getReferrer());
             formFieldsHolder.add(referrerField);
         }
 
         // add the 'icon' parameter when defined
         if (StringUtils.isNotBlank(settings.getIcon())) {
-            Hidden iconField = new Hidden(ICON_PARAM, settings.getIcon());
+            final Hidden iconField = new Hidden(ICON_PARAM, settings.getIcon());
             formFieldsHolder.add(iconField);
         }
 
         // add the 'exit' parameter when defined
         if (StringUtils.isNotBlank(settings.getExit())) {
-            Hidden exitField = new Hidden(EXIT_PARAM, settings.getExit());
+            final Hidden exitField = new Hidden(EXIT_PARAM, settings.getExit());
             formFieldsHolder.add(exitField);
         }
 
         // add the 'title' parameter when defined
         if (StringUtils.isNotBlank(settings.getTitle())) {
-            Hidden titleField = new Hidden(TITLE_PARAM, settings.getTitle());
+            final Hidden titleField = new Hidden(TITLE_PARAM, settings.getTitle());
             formFieldsHolder.add(titleField);
         }
 
         // add the 'type' parameter when defined
         if (settings.getType() != null) {
-            Hidden typeField = new Hidden(TYPE_PARAM, settings.getType().toString().toLowerCase());
+            final Hidden typeField = new Hidden(TYPE_PARAM,
+                    settings.getType().toString().toLowerCase());
             formFieldsHolder.add(typeField);
         }
 
         // add the 'redirect' parameter when defined and true
-        if (Boolean.TRUE.equals(settings.getRedirect()))
+        if (Boolean.TRUE.equals(settings.getRedirect())) {
             formFieldsHolder.add(new Hidden(REDIRECT_PARAM, "true"));
+        }
 
         // add the 'lockTarget' parameter when defined and true
-        if (Boolean.TRUE.equals(settings.getLockTarget()))
+        if (Boolean.TRUE.equals(settings.getLockTarget())) {
             formFieldsHolder.add(new Hidden(LOCK_TARGET_PARAM, "true"));
+        }
 
         // add the 'lockTitle' parameter when defined and true
-        if (Boolean.TRUE.equals(settings.getLockTitle()))
+        if (Boolean.TRUE.equals(settings.getLockTitle())) {
             formFieldsHolder.add(new Hidden(LOCK_TITLE_PARAM, "true"));
+        }
 
         // add the 'lockType' parameter when defined
         if (settings.getLockType() != null) {
-            Hidden lockTypeField = new Hidden(LOCK_TYPE_PARAM,
+            final Hidden lockTypeField = new Hidden(LOCK_TYPE_PARAM,
                     settings.getLockType().toString().toLowerCase());
             formFieldsHolder.add(lockTypeField);
         }
 
         // add the 'quality' parameter when valid
         if (settings.getQuality() != null) {
-            Hidden qualityField = new Hidden(QUALITY_PARAM, String.valueOf(settings.getQuality()));
+            final Hidden qualityField = new Hidden(QUALITY_PARAM,
+                    String.valueOf(settings.getQuality()));
             formFieldsHolder.add(qualityField);
         }
 
         // add the 'copy' parameter when defined and true
-        if (Boolean.TRUE.equals(settings.getCopy()))
+        if (Boolean.TRUE.equals(settings.getCopy())) {
             formFieldsHolder.add(new Hidden(COPY_PARAM, "true"));
+        }
 
         // add the 'maxWidth' parameter when valid
         if (settings.getMaxWidth() != null) {
-            Hidden maxWidthField = new Hidden(MAX_WIDTH_PARAM,
+            final Hidden maxWidthField = new Hidden(MAX_WIDTH_PARAM,
                     String.valueOf(settings.getMaxWidth()));
             formFieldsHolder.add(maxWidthField);
         }
 
         // add the 'maxHeight' parameter when valid
         if (settings.getMaxHeight() != null) {
-            Hidden maxHeightField = new Hidden(MAX_HEIGHT_PARAM,
+            final Hidden maxHeightField = new Hidden(MAX_HEIGHT_PARAM,
                     String.valueOf(settings.getMaxHeight()));
             formFieldsHolder.add(maxHeightField);
         }
 
         // add the 'wmode' parameter when defined
         if (settings.getWmode() != null) {
-            Hidden wmodeField = new Hidden(WMODE_PARAM,
+            final Hidden wmodeField = new Hidden(WMODE_PARAM,
                     settings.getWmode().toString().toLowerCase());
             formFieldsHolder.add(wmodeField);
         }
@@ -275,16 +273,16 @@ public class PixlrUtils {
         // add the 'target' parameter when defined
         if (StringUtils.isNotBlank(settings.getTarget())) {
 
-            StringBuilder target = new StringBuilder(settings.getTarget());
+            final StringBuilder target = new StringBuilder(settings.getTarget());
 
             // add any additional parameter to the target URL, so that they can be
             // passed along by 'Pixlr' to your handler (specified as target): that
             // is the only way, as for now (27/03/2013) to send non-API parameters
             boolean first = !target.toString().contains("?");
-            for (Entry<String, String> entry : settings.getAdditionalParameters().entrySet()) {
-                if (!first)
+            for (final Entry<String, String> entry : settings.getAdditionalParameters().entrySet()) {
+                if (!first) {
                     target.append("&");
-                else {
+                } else {
                     target.append("?");
                     first = false;
                 }
@@ -295,11 +293,19 @@ public class PixlrUtils {
                 target.append(";");
             }
 
-            Hidden targetField = new Hidden(TARGET_PARAM, target.toString());
+            final Hidden targetField = new Hidden(TARGET_PARAM, target.toString());
             formFieldsHolder.add(targetField);
-        } else if (!settings.getAdditionalParameters().isEmpty())
+        } else if (!settings.getAdditionalParameters().isEmpty()) {
             throw new IllegalArgumentException(
                     "'target' URL must be defined to send additional parameters!");
+        }
+
+    }
+
+    /**
+     * Utility class. No public constructor.
+     */
+    private PixlrUtils() {
 
     }
 }

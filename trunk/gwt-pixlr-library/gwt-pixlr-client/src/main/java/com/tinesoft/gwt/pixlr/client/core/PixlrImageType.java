@@ -11,6 +11,23 @@ public enum PixlrImageType {
 
     JPG(".jpg"), PNG(".png"), BMP(".bmp"), PXD(".pxd");
 
+    /**
+     * Returns the enum constant of type {@link PixlrImageType} with the specified name (case
+     * insensitive).
+     * 
+     * @param name the name of the enum constant
+     * @return the enum constant of type {@link PixlrImageType} with the specified name
+     * @throws IllegalArgumentException if enum type {@link PixlrImageType} has no constant with the
+     *             specified name
+     * @throws NullPointerException if <tt>name</tt> is null
+     */
+    public static PixlrImageType from(final String name) {
+        if (name == null) {
+            throw new NullPointerException("Name is null");
+        }
+        return PixlrImageType.valueOf(name.trim().toUpperCase());
+    }
+
     private final String extension;
 
     private PixlrImageType(final String extension) {
@@ -20,15 +37,9 @@ public enum PixlrImageType {
     /**
      * Gets the extension of the given given image type.
      * 
-     * @return
+     * @return the extension
      */
     public String getExtension() {
         return extension;
-    }
-
-    public static PixlrImageType from(String name) {
-        if (name == null)
-            throw new NullPointerException("Name is null");
-        return PixlrImageType.valueOf(name.trim().toUpperCase());
     }
 }

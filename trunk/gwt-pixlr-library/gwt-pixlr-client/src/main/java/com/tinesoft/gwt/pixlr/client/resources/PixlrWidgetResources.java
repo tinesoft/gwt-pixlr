@@ -15,11 +15,6 @@ import com.tinesoft.gwt.pixlr.client.ui.PixlrWidget;
 public interface PixlrWidgetResources extends ClientBundle {
 
     /**
-     * The path to the default CSS styles used by this resource.
-     */
-    String DEFAULT_CSS = "com/tinesoft/gwt/pixlr/client/resources/PixlrWidgetStyle.css";
-
-    /**
      * CSS Style for the PixlrWidget.
      * 
      * @author Tine Kondo
@@ -28,48 +23,75 @@ public interface PixlrWidgetResources extends ClientBundle {
     interface PixlrWidgetStyle extends BaseStyle {
 
         /**
-         * Defines the style of the target iframe that displays the 'Pixlr' service view.
+         * Defines the style of a button.
          * 
-         * @return
+         * @return the 'button' css class name
          */
-        String targetFrame();
+        String button();
 
         /**
          * Defines the style of form panel used to send parameters to 'Pixlr' service.
          * 
-         * @return
+         * @return the 'formPanel' css class name
          */
         String formPanel();
+
+        /**
+         * Defines the style of a large button (used for the 'upload button')
+         * 
+         * @return the 'largeButton' css class name
+         */
+        String largeButton();
+
+        /**
+         * Defines the style of the loading indicator that appears when calling 'Pixlr' service.
+         * 
+         * @return the 'loadingIcon' css class name
+         */
+        String loadingIcon();
+
+        /**
+         * Defines the style of the target iframe that displays the 'Pixlr' service view.
+         * 
+         * @return the 'targetFrame' css class name
+         */
+        String targetFrame();
 
         /**
          * Defines the style of the 'upload button', displayed when using 'POST' method to contact
          * 'Pixlr'.
          * 
-         * @return
+         * @return the 'uploadButton' css class name
          */
         String uploadButton();
 
         /**
-         * Defines the style of a large button (used for the 'upload button')
+         * Defines the style of the 'upload icon', displayed next to the button text.
          * 
-         * @return
+         * @return the 'uploadIcon' css class name
          */
-        String largeButton();
+        String uploadIcon();
 
         /**
-         * Defines the style of a button.
+         * Defines the style of panel containing the 'upload button', displayed when using 'POST'
+         * method to contact 'Pixlr'.
          * 
-         * @return
+         * @return the 'uploadPanel' css class name
          */
-        String button();
+        String uploadPanel();
 
         /**
-         * Defines the style of the loading indicator that appears when calling 'Pixlr' service.
+         * Defines the style of the 'upload button' text.
          * 
-         * @return
+         * @return the 'uploadText' css class name
          */
-        String loading();
+        String uploadText();
     }
+
+    /**
+     * The path to the default CSS styles used by this resource.
+     */
+    String DEFAULT_CSS = "com/tinesoft/gwt/pixlr/client/resources/PixlrWidgetStyle.css";
 
     @Source({ BaseStyle.DEFAULT_CSS, DEFAULT_CSS })
     @NotStrict
@@ -78,4 +100,6 @@ public interface PixlrWidgetResources extends ClientBundle {
     @Source("images/loading.gif")
     ImageResource loading();
 
+    @Source("images/upload.png")
+    ImageResource upload();
 }

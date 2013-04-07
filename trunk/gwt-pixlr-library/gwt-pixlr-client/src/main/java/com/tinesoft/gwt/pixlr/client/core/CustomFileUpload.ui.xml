@@ -1,0 +1,40 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui='urn:ui:com.google.gwt.uibinder'
+	xmlns:g='urn:import:com.google.gwt.user.client.ui' ui:generateFormat='com.google.gwt.i18n.rebind.format.PropertiesFormat'
+	ui:generateKeys='com.google.gwt.i18n.rebind.keygen.MD5KeyGenerator'
+	ui:generateLocales='default'>
+
+	<ui:with field="resources" type="com.tinesoft.gwt.pixlr.client.resources.PixlrWidgetResources"/>
+	<ui:with type="com.tinesoft.gwt.pixlr.client.core.CustomFileUpload.I18nMessages" field="i18n"/>
+	
+	<ui:style>
+			/* Styling input[type=file] is not straightforward!
+			 *
+			 * See http://www.quirksmode.org/dom/inputfile.html
+			 */
+			
+			.fakeUploadInput
+			{
+				position:absolute;
+				z-index :1;	
+			}
+			
+			.realUploadInput
+			{
+				position:relative;
+				z-index :2;
+				margin-top:15px;
+				-webkit-opacity:0 ;
+				-moz-opacity:0 ;
+				opacity: 0;
+				filter:alpha(opacity: 0);
+			}
+		</ui:style>
+	<g:FlowPanel styleName="{resources.css.uploadPanel}">
+		<g:FlowPanel ui:field="fakeFileUpload" addStyleNames="{style.fakeUploadInput}  {resources.css.largeButton} {resources.css.uploadButton} {resources.css.button}" >
+			<g:FlowPanel styleName="{resources.css.uploadIcon}"/>
+			<g:Label ui:field="uploadText" styleName="{resources.css.uploadText}" text="{i18n.uploadText}"/>		
+		</g:FlowPanel>
+		<g:FileUpload ui:field="realFileUpload" styleName="{style.realUploadInput}"/>
+	</g:FlowPanel>
+</ui:UiBinder> 

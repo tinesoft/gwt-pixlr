@@ -6,7 +6,7 @@
 	<inherits name="com.tinesoft.gwt.pixlr.showcase.ShowcaseApp" />
 
 	<!-- User Agent (Google Chrome) -->
-	<set-property name="user.agent" value="safari" />
+	<set-property name="user.agent" value="safari,gecko1_8,ie9" />
 	
 	<!-- GWT Log -->
 	<inherits name="com.allen_sauer.gwt.log.gwt-log-DEBUG" />

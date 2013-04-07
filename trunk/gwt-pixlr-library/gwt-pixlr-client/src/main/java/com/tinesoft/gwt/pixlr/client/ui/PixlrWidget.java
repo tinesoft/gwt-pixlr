@@ -7,11 +7,11 @@ import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.uibinder.client.UiHandler;
 import com.google.gwt.user.client.ui.Composite;
+import com.google.gwt.user.client.ui.FlowPanel;
 import com.google.gwt.user.client.ui.FormPanel;
 import com.google.gwt.user.client.ui.FormPanel.SubmitCompleteEvent;
 import com.google.gwt.user.client.ui.FormPanel.SubmitEvent;
 import com.google.gwt.user.client.ui.NamedFrame;
-import com.google.gwt.user.client.ui.VerticalPanel;
 import com.google.gwt.user.client.ui.Widget;
 
 import com.tinesoft.gwt.pixlr.client.core.PixlrSendMethod;
@@ -28,6 +28,13 @@ import com.tinesoft.gwt.pixlr.client.util.PixlrUtils;
 public class PixlrWidget extends Composite {
 
     interface PixlrWidgetUiBinder extends UiBinder<Widget, PixlrWidget> {
+    }
+
+    private static PixlrWidgetResources getDefaultResources() {
+        if (DEFAULT_RESOURCES == null) {
+            DEFAULT_RESOURCES = GWT.create(PixlrWidgetResources.class);
+        }
+        return DEFAULT_RESOURCES;
     }
 
     @UiField(provided = true)
@@ -60,24 +67,25 @@ public class PixlrWidget extends Composite {
      * @param resources a custom {@link PixlrWidgetResources} to change css, images used by the
      *            widget
      */
-    public PixlrWidget(final PixlrSettings settings, PixlrWidgetResources resources) {
+    public PixlrWidget(final PixlrSettings settings, final PixlrWidgetResources resources) {
         this.settings = settings;
         this.resources = resources;
-        this.targetFrame = new NamedFrame(GWTP_TARGET_IFRAME_NAME);
-        this.formPanel = new FormPanel(targetFrame);
-        this.formPanel.setWidget(new VerticalPanel());
+        targetFrame = new NamedFrame(GWTP_TARGET_IFRAME_NAME);
+        formPanel = new FormPanel(targetFrame);
+        formPanel.setWidget(new FlowPanel());
         initWidget(uiBinder.createAndBindUi(this));
 
         // make sure that the css get injected
         resources.css().ensureInjected();
     }
 
-    @Override
-    protected void onLoad() {
-        targetFrame.setWidth(this.getElement().getStyle().getWidth());
-        targetFrame.setHeight(this.getElement().getStyle().getHeight());
-
-        // initialize();
+    /**
+     * Gets the inner {@link PixlrSettings settings} used by the widget.
+     * 
+     * @return the Pixlr settings
+     */
+    public PixlrSettings getSettings() {
+        return settings;
     }
 
     private void initialize() {
@@ -95,44 +103,36 @@ public class PixlrWidget extends Composite {
     }
 
     @UiHandler("formPanel")
-    protected void onFormSubmitted(SubmitEvent submitEvent) {
-        targetFrame.addStyleName(resources.css().loading());
+    protected void onFormSubmitCompleted(final SubmitCompleteEvent submitCompleteEvent) {
+        targetFrame.removeStyleName(resources.css().loadingIcon());
     }
 
     @UiHandler("formPanel")
-    protected void onFormSubmitCompleted(SubmitCompleteEvent submitCompleteEvent) {
-        targetFrame.removeStyleName(resources.css().loading());
+    protected void onFormSubmitted(final SubmitEvent submitEvent) {
+        targetFrame.addStyleName(resources.css().loadingIcon());
     }
 
     @UiHandler("targetFrame")
-    protected void onFrameLoad(LoadEvent loadEvent) {
-        targetFrame.removeStyleName(resources.css().loading());
+    protected void onFrameLoad(final LoadEvent loadEvent) {
+        targetFrame.removeStyleName(resources.css().loadingIcon());
     }
 
-    /**
-     * Gets the inner {@link PixlrSettings settings} used by the widget.
-     * 
-     * @return
-     */
-    public PixlrSettings getSettings() {
-        return settings;
+    @Override
+    protected void onLoad() {
+        targetFrame.setWidth(getElement().getStyle().getWidth());
+        targetFrame.setHeight(getElement().getStyle().getHeight());
+
+        // initialize();
     }
 
     /**
      * Sets the inner {@link PixlrSettings settings} used by the widget and reloads it.
      * 
-     * @param settings
+     * @param settings the Pixlr settings
      */
-    public void setSettings(PixlrSettings settings) {
+    public void setSettings(final PixlrSettings settings) {
         this.settings = settings;
         initialize();
-    }
-
-    private static PixlrWidgetResources getDefaultResources() {
-        if (DEFAULT_RESOURCES == null) {
-            DEFAULT_RESOURCES = GWT.create(PixlrWidgetResources.class);
-        }
-        return DEFAULT_RESOURCES;
     }
 
 }
