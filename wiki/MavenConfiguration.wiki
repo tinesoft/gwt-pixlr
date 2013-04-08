@@ -31,7 +31,7 @@ This dependency is a compound jar that contains both Client and Server side comp
 </dependency>
 }}}
 
-The dependency will soon be published on Maven Central. So nothing more is required to have it working.
+The dependencies are published on Maven Central. So nothing more is required to have it working.
 
 But if you want to use a snapshot (= under development) version of the library, you must add the following in the *`<`repositories`>`* section of your pom.xml:
 {{{
